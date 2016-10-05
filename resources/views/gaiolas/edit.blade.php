@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('htmlheader_title')
-	Novo
+	Gaiola
 @endsection
 
 @section('contentheader_title')
@@ -9,33 +9,31 @@
 @endsection
 
 @section('contentheader_description')
-  Novo
+  Editar
 @endsection
-
 
 @section('main-content')
     @include('layouts.shared.alert')
-	<div class="row">
+     <div class="row">
 	    <div class="col-lg-12">
 	        <div class="box box-default">
 	            <div class="box-header with-border">
-	              <h3 class="box-title">
-	              	 
+	              <h3 class="box-title">	              	 
 	              </h3>
 	              
 				  <div class="pull-right box-tools">
-							<a href="{{ url('providers') }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="Voltar">
-								 <i class="fa  fa-arrow-left"></i>
-							</a>
+						<a href="{{ url('gaiolas') }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="Voltar">
+							 <i class="fa  fa-arrow-left"></i>
+						</a>
 					</div><!-- /. tools -->
 	            </div><!-- /.box-header -->
 
 	            <div class="box-body">
-	                {!! Form::open(['route'=>'providers.store', null,'id'=>'providers-form']) !!}
-					    @include('providers.form', array('submitButtonText'=>'Add Provider'))
+					{!! Form::model($gaiola, ['method'=>'PATCH',null,'route'=>['gaiolas.update', $gaiola->id],'id'=>'gaiolas-form'])!!}
+					    @include('gaiolas.form', array('submitButtonText'=>'Edit Gaiola'))
 					{!! Form::close() !!}
-	            </div>
-	        </div>
-	    </div>
+				</div>
+			</div>
+		</div>
 	</div>
 @endsection

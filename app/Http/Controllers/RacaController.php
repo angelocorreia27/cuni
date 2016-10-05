@@ -3,22 +3,14 @@
 namespace App\Http\Controllers;
 
 //use Illuminate\Http\Request;
+use App\Http\Requests\RacaRequest;
 
-use App\Http\Requests\ProviderRequest;
+use App\Raca;
+
 use Request;
-use App\Fornecedor;
 
-class ProviderController extends Controller
+class RacaController extends Controller
 {
-     /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
     /**
      * Display a listing of the resource.
      *
@@ -26,8 +18,8 @@ class ProviderController extends Controller
      */
     public function index()
     {
-        $providers = Fornecedor::all();
-        return view('providers.index',compact('providers'));
+        $racas = Raca::all();
+        return view('racas.index',compact('racas'));
     }
 
     /**
@@ -37,7 +29,7 @@ class ProviderController extends Controller
      */
     public function create()
     {
-        return view('providers.create');
+        return view('racas.create');
     }
 
     /**
@@ -46,16 +38,15 @@ class ProviderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProviderRequest $request)
+    public function store(RacaRequest $request)
     {
-         $fornecedor = Fornecedor::create($request->all());
-
-        \Session::flash('flash_message','Provider successfully added.'); //<--FLASH MESSAGE
+        $article = Raca::create($request->all());
+        session()->flash('flash_message','Raca was stored with success');
 
         if (Request::wantsJson()){
-            return $fornecedor;
-        }else{             
-             return redirect('providers');             
+            return $raca;
+        }else{
+            return redirect('racas');
         }
     }
 
@@ -65,7 +56,7 @@ class ProviderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Raca $raca)
     {
         //
     }
@@ -76,9 +67,9 @@ class ProviderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Fornecedor $provider)
+    public function edit(Raca $raca)
     {
-        return view('providers.edit',compact('provider'));  
+        return view('racas.edit',compact('raca'));
     }
 
     /**
@@ -88,15 +79,15 @@ class ProviderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ProviderRequest $request, Fornecedor $fornecedor)
+    public function update(RacaRequest $request, Raca $raca)
     {
-        $fornecedor->update($request->all());
-        \Session::flash('flash_message','Provider successfully updated.'); //<--FLASH MESSAGE
+        $raca->update($request->all());
+        session()->flash('flash_message','Raça was update with success');
 
         if (Request::wantsJson()){
-            return $fornecedor;
+            return $raca;
         }else{
-            return redirect()->route('providers.index');
+            return redirect('racas');
         }
     }
 
@@ -106,15 +97,15 @@ class ProviderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Fornecedor $fornecedor)
+    public function destroy(Raca $raca)
     {
-        $deleted= $fornecedor->delete();
-        \Session::flash('flash_message','Provider successfully deleted.'); //<--FLASH MESSAGE
+        $deleted= $raca->delete();
+        session()->flash('flash_message','Raça was removed with success');
 
         if (Request::wantsJson()){
             return (string) $deleted;
         }else{
-            return redirect()->route('providers.index');
+            return redirect('racas');
         }
     }
 }

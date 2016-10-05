@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('htmlheader_title')
-	Novo
+	Gaiola
 @endsection
 
 @section('contentheader_title')
@@ -24,15 +24,15 @@
 	              </h3>
 	              
 				  <div class="pull-right box-tools">
-							<a href="{{ url('providers') }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="Voltar">
+							<a href="{{ url('gaiolas') }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="Voltar">
 								 <i class="fa  fa-arrow-left"></i>
 							</a>
 					</div><!-- /. tools -->
 	            </div><!-- /.box-header -->
 
 	            <div class="box-body">
-	                {!! Form::open(['route'=>'providers.store', null,'id'=>'providers-form']) !!}
-					    @include('providers.form', array('submitButtonText'=>'Add Provider'))
+	                {!! Form::open(['route'=>'gaiolas.store', 'id'=>'gaiolas-form','files'=>true]) !!}
+					    @include('gaiolas.form', array('submitButtonText'=>'Add Gaiola'))
 					{!! Form::close() !!}
 	            </div>
 	        </div>

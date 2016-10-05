@@ -2,7 +2,7 @@
 	<div class="col-lg-3 col-md-4 col-sm-6">
         <div class="form-group form-group-sm">
 			{!! Form::label('id_gaiola', 'Gaiola:') !!}
-			{!! Form::text('id_gaiola', null, ['class'=>'form-control']) !!}
+			{!! Form::select('id_gaiola',['' => 'Escolha o Gaiola'] + $gaiolas,$animal->id_gaiola, ['class'=>'form-control select2','style'=>'width: 100%;'])  !!}
 		</div>
 	</div>
 	<div class="col-lg-3 col-md-4 col-sm-6">
@@ -14,7 +14,7 @@
 	<div class="col-lg-3 col-md-4 col-sm-6">
         <div class="form-group form-group-sm">
 			{!! Form::label('id_raca', 'Raça:') !!}
-			{!! Form::text('id_raca', null, ['class'=>'form-control']) !!}
+			{!! Form::select('id_raca',['' => 'Escolha o Raca'] + $racas,$animal->id_gaiola, ['class'=>'form-control select2','style'=>'width: 100%;'])  !!}
 		</div>
 	</div>
 	<div class="col-lg-3 col-md-4 col-sm-6">

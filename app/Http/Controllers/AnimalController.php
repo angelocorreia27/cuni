@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Request;
+
 
 use App\Http\Requests\AnimalRequest;
+
 use App\Animal;
 use App\Fornecedor;
+use App\Raca;
+use App\Gaiola;
+use Request;
 
 class AnimalController extends Controller
 {
@@ -26,8 +30,15 @@ class AnimalController extends Controller
      */
     public function index()
     {
-        $animais = Animal::all();
-        return view('animais.index',compact('animais'));
+        $animais= Animal::all();
+
+        print_r($animais);
+
+        if (Request::wantsJson()){
+            return $animais;
+        }else{
+            return view('animais.index',compact('animais'));
+        }
     }
 
     /**
@@ -39,7 +50,9 @@ class AnimalController extends Controller
     {
          $animal = new Animal();
          $fornecedores = Fornecedor::pluck('name','id')->all();
-         return view('animais.create',compact('animal','fornecedores'));
+         $gaiolas = Gaiola::pluck('descricao','id')->all();
+         $racas = Raca::pluck('descricao','id')->all();
+         return view('animais.create',compact('animal','fornecedores','racas','gaiolas'));
     }
 
     /**
@@ -53,12 +66,12 @@ class AnimalController extends Controller
         
          $animal = Animal::create($request->all());
 
-        \Session::flash('flash_message','Animal successfully added.'); //<--FLASH MESSAGE
+        session()->flash('flash_message','Animal successfully added.'); //<--FLASH MESSAGE
 
         if (Request::wantsJson()){
             return $animal;
         }else{             
-             return view('animal.index');             
+             return redirect('animais');            
         }
     }
 
@@ -81,7 +94,10 @@ class AnimalController extends Controller
      */
     public function edit(Animal $animal)
     {
-        return view('providers.edit',compact('animal'));  
+        $fornecedores = Fornecedor::pluck('name','id')->all();
+         $gaiolas = Gaiola::pluck('descricao','id')->all();
+         $racas = Raca::pluck('descricao','id')->all();
+        return view('providers.edit',compact('animal','fornecedores','racas','gaiolas'));  
     }
 
     /**
@@ -94,12 +110,12 @@ class AnimalController extends Controller
     public function update(AnimalRequest $request, Animal $animal)
     {
          $animal->update($request->all());
-        \Session::flash('flash_message','Animal successfully updated.'); //<--FLASH MESSAGE
+        session()->flash('flash_message','Animal successfully updated.'); //<--FLASH MESSAGE
 
         if (Request::wantsJson()){
             return $animal;
         }else{
-            return redirect()->route('animais.index');
+            return redirect('animais');
         }
     }
 
@@ -112,7 +128,7 @@ class AnimalController extends Controller
     public function destroy(Animal $animal)
     {
         $deleted= $animal->delete();
-        \Session::flash('flash_message','Animal successfully deleted.'); //<--FLASH MESSAGE
+        session()->flash('flash_message','Animal successfully deleted.'); //<--FLASH MESSAGE
 
         if (Request::wantsJson()){
             return (string) $deleted;

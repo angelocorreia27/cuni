@@ -1,5 +1,8 @@
 <?php
 
+Route::singularResourceParameters();
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,8 +18,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/logout', 'Auth\LoginController@logout');
+
 
 Route::group(['middleware' => ['web']], function(){
 	Route::resource('providers', 'ProviderController');
     Route::resource('animais', 'AnimalController');
+    Route::resource('racas', 'RacaController');
+    Route::resource('gaiolas', 'GaiolaController');
 });

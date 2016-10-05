@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('htmlheader_title')
-	Novo
+	Raca
 @endsection
 
 @section('contentheader_title')
@@ -24,15 +24,15 @@
 	              </h3>
 	              
 				  <div class="pull-right box-tools">
-							<a href="{{ url('providers') }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="Voltar">
+							<a href="{{ url('racas') }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="Voltar">
 								 <i class="fa  fa-arrow-left"></i>
 							</a>
 					</div><!-- /. tools -->
 	            </div><!-- /.box-header -->
 
 	            <div class="box-body">
-	                {!! Form::open(['route'=>'providers.store', null,'id'=>'providers-form']) !!}
-					    @include('providers.form', array('submitButtonText'=>'Add Provider'))
+	                {!! Form::open(['route'=>'racas.store', 'id'=>'racas-form','files'=>true]) !!}
+					    @include('racas.form', array('submitButtonText'=>'Add Raça'))
 					{!! Form::close() !!}
 	            </div>
 	        </div>

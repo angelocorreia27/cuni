@@ -27,7 +27,7 @@ class AnimalRequest extends FormRequest
             'id_gaiola' =>'required',
             'data_nascimento'=>'required',
             'tipo_uso' =>'required',
-            'sexo'=>'required'
+            'sexo'=>'required',
         ];
     }
 }

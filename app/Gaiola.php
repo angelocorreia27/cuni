@@ -15,4 +15,8 @@ class Gaiola extends Model {
 	protected $dates = ['deleted_at'];
 	protected $fillable = array('codigo', 'descricao');
 
+	public function animais(){
+    	return $this->hasMany('App\Animal');
+    }
+
 }

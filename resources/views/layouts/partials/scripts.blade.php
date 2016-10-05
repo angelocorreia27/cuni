@@ -25,7 +25,8 @@
         $(".select2").select2();
         $("#table-stock").DataTable();
         $("#table-providers").DataTable();
-        
+        $("#table-racas").DataTable();
+        $("#table-gaiolas").DataTable();
       });
 </script>
 

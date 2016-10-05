@@ -3,22 +3,14 @@
 namespace App\Http\Controllers;
 
 //use Illuminate\Http\Request;
+use App\Http\Requests\GaiolaRequest;
 
-use App\Http\Requests\ProviderRequest;
+use App\Gaiola;
+
 use Request;
-use App\Fornecedor;
 
-class ProviderController extends Controller
+class GaiolaController extends Controller
 {
-     /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
     /**
      * Display a listing of the resource.
      *
@@ -26,8 +18,8 @@ class ProviderController extends Controller
      */
     public function index()
     {
-        $providers = Fornecedor::all();
-        return view('providers.index',compact('providers'));
+        $gaiolas  = Gaiola::all();
+        return view('gaiolas.index',compact('gaiolas'));
     }
 
     /**
@@ -37,7 +29,7 @@ class ProviderController extends Controller
      */
     public function create()
     {
-        return view('providers.create');
+        return view('gaiolas.create');
     }
 
     /**
@@ -46,16 +38,15 @@ class ProviderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProviderRequest $request)
+    public function store(GaiolaRequest $request)
     {
-         $fornecedor = Fornecedor::create($request->all());
-
-        \Session::flash('flash_message','Provider successfully added.'); //<--FLASH MESSAGE
+         $gaiola = Gaiola::create($request->all());
+        session()->flash('flash_message','Gaiola was stored with success');
 
         if (Request::wantsJson()){
-            return $fornecedor;
-        }else{             
-             return redirect('providers');             
+            return $gaiola;
+        }else{
+            return redirect('gaiolas');
         }
     }
 
@@ -65,7 +56,7 @@ class ProviderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Gaiola $gaiola)
     {
         //
     }
@@ -76,9 +67,9 @@ class ProviderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Fornecedor $provider)
+    public function edit(Gaiola $gaiola)
     {
-        return view('providers.edit',compact('provider'));  
+        return view('gaiolas.edit',compact('gaiola'));
     }
 
     /**
@@ -88,15 +79,15 @@ class ProviderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ProviderRequest $request, Fornecedor $fornecedor)
+    public function update(GaiolaRequest $request, Gaiola $gaiola)
     {
-        $fornecedor->update($request->all());
-        \Session::flash('flash_message','Provider successfully updated.'); //<--FLASH MESSAGE
+        $gaiola->update($request->all());
+        session()->flash('flash_message','Gaiola was update with success');
 
         if (Request::wantsJson()){
-            return $fornecedor;
+            return $gaiola;
         }else{
-            return redirect()->route('providers.index');
+            return redirect('gaiolas');
         }
     }
 
@@ -106,15 +97,15 @@ class ProviderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Fornecedor $fornecedor)
+    public function destroy(Gaiola $gaiola)
     {
-        $deleted= $fornecedor->delete();
-        \Session::flash('flash_message','Provider successfully deleted.'); //<--FLASH MESSAGE
+        $deleted= $gaiola->delete();
+        session()->flash('flash_message','Gaiola was removed with success');
 
         if (Request::wantsJson()){
             return (string) $deleted;
         }else{
-            return redirect()->route('providers.index');
+            return redirect('gaiolas');
         }
     }
 }

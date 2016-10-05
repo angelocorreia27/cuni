@@ -27,7 +27,7 @@
 	                  
 	              </div><!-- /. tools -->
 	            </div><!-- /.box-header -->
-	  
+	            
 	            <div class="box-body">
 	                <div class="row">
 			            <div class="col-xs-12 table-responsive">
@@ -52,20 +52,20 @@
 				                    @foreach ($animais as $animal)
 				                    	<tr>
 				                    		<td>{{$animal->gaiola->descricao}}</td>
-				                    		<td>{{$animal->gaiola->name}}</td>
-				                    		<td>{{$animal->gaiola->name}}</td>
+				                    		<td></td>
+				                    		<td>{{$animal->sexo}}</td>
 				                    		<td>{{$animal->tatuagem}}</td>
-				                    		<td>{{$animal->raca->descricao}}</td>
-				                    		<td>{{$animal->gaiola->name}}</td>
-				                    		<td>{{$animal->fornecedores->name}}</td>
-				                    		<td>{{$animal->gaiola->name}}</td>
-				                    		<td>{{$animal->gaiola->name}}</td>
-				                    		<td>{{$animal->gaiola->name}}</td>
-				                    		<td{{$animal->gaiola->name}}></td>
+				                    		<td>{{$animal->id_raca}}</td>
+				                    		<td>{{$animal->ciclo}}</td>
+				                    		<td>{{$animal->id_fornecedor}}</td>
+				                    		<td></td>
+				                    		<td>{{ \Carbon\Carbon::createFromFormat('Y-m-d', $animal->data_entrada)->format('d-m-Y') }}</td>
+				                    		<td>{{$animal->id}}</td>
+				                    		<td>{{$animal->ciclo_entrada}}</td>
 				                    		<td class="actions">
 						                        <a href="{{ route('animais.edit',$animal->id) }}" class="btn btn-primary btn-xs", data-remote='true'])>      <i class="fa fa-edit"></i>
 						                        </a>                           
-						                        <button type="button" class="btn btn-xs btn-warning btn-flat" data-toggle="modal" data-target="#confirmDelete" data-id="{{ $animal->id }}" data-name="{{ $animal->name }}" data-title="Confirm animal deletion" data-url="/animals/">
+						                        <button type="button" class="btn btn-xs btn-warning btn-flat" data-toggle="modal" data-target="#confirmDelete" data-id="{{ $animal->id }}" data-name="{{ $animal->name }}" data-title="Confirm provider deletion" data-url="/animais/">
 						                            <i class="fa fa-trash"></i>
 						                        </button>  
 						                    </td>

@@ -12,6 +12,7 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'lock'                    => 'Lock',
     'app_name'                =>'Palpite',
     'logged'                  => 'You are logged in!',
     'someproblems'            => 'There were some problems with your input.',
