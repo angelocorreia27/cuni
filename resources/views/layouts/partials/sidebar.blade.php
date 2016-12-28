@@ -41,26 +41,42 @@
             <li class="active"><a href="{{ url('home') }}"><i class='fa fa-home'></i> <span>{{ trans('adminlte_lang::message.home') }}</span></a></li>
             
             <li class="treeview">
-                <a href="#"><i class='fa fa-link'></i> <span>Meus Coelhos</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <a href="#"><i class='fa fa-link'></i> <span>Gestão Cunícula</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a href="#">Reprodução</a></li>
-                    <li><a href="#">Creche</a></li>
-                    <li><a href="#">Maternidade</a></li>
-                    <li><a href="#">Recria Terminação</a></li>
+                    <li><a href="{{ url('animais') }}">Reprodutores</a></li>
+                    <li><a href="#">Mapa de Cubrição</a></li>
+                    <li><a href="#">Cubrição</a></li>
+                    <li><a href="#">Palpação</a></li>
+                    <li><a href="#">Gestação</a></li>
+                    <li><a href="#">Parto</a></li>
+                    <li><a href="#">Desmame</a></li>
+                    <li><a href="#">Obito</a></li>
                 </ul>
             </li>
-            <li><a href="#"><i class='fa fa-shopping-cart'></i> <span>Venda</span></a></li>
+
+            <li class="treeview">
+                <a href="#"><i class='fa fa-link'></i> <span>Saída de Animais</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="#">Abate</a></li>
+                    <li><a href="#">Venda</a></li>
+                </ul>
+            </li>
+
+            <!-- <li><a href="#"><i class='fa fa-shopping-cart'></i> <span>Venda</span></a></li>
             <li><a href="#"><i class='fa fa-barcode'></i> <span>Compra</span></a></li>
             <li><a href="{{ url('animais') }}"><i class='fa fa-database'></i> <span>Estoque</span></a></li>
-            <li><a href="{{ url('providers') }}"><i class='fa fa-truck'></i> <span>Fornecedor</span></a></li>
+            <li><a href="{{ url('providers') }}"><i class='fa fa-truck'></i> <span>Fornecedor</span></a></li> -->
+
             <li class="treeview">
-                <a href="#"><i class='fa fa-link'></i> <span>Paramentrizações</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <a href="#"><i class='fa fa-link'></i> <span>Configurações</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a href="{{ url('racas') }}">Raca</a></li>
+                    <li><a href="{{ url('racas') }}">Raça</a></li>
                     <li><a href="{{ url('gaiolas') }}">Gaiola</a></li>
                 </ul>
             </li>
-            <li><a href="#"><i class='fa fa-gears'></i> <span>Configurações</span></a></li>
+
+           <!-- <li><a href="#"><i class='fa fa-gears'></i> <span>Configurações</span></a></li> --> 
+
         </ul><!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->

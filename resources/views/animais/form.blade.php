@@ -41,18 +41,49 @@
 			{!! Form::text('peso_entrada', null, ['class'=>'form-control']) !!}
 		</div>
 	</div>
-	<div class="col-lg-3 col-md-4 col-sm-6">
+	
+	<!-- <div class="col-lg-3 col-md-4 col-sm-6">
         <div class="form-group form-group-sm">
 			{!! Form::label('tipo_uso', 'Tipo Uso:') !!}
 			{!! Form::text('tipo_uso', null, ['class'=>'form-control']) !!}
 		</div>
-	</div>
+	</div> -->
+
 	<div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="form-group form-group-sm">
+        	
+        	{!! Form::radio('tipo_uso', 'Reprodução', true) !!}
+        	{!! Form::label('Reprodução', 'Reprodução') !!}
+        	{!! Form::radio('tipo_uso', 'Reposição') !!}	
+			{!! Form::label('Reposição', 'Reposição') !!}
+			
+		</div>
+	</div>
+
+	
+	<div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="form-group form-group-sm">
+
+        	{!!Form::radio('sexo', 'Femea', true) !!}		
+			{!! Form::label('Femea', 'Femea') !!}
+        	{!! Form::radio('sexo', 'Macho') !!}
+        	{!! Form::label('Macho', 'Macho') !!}
+			
+		</div>
+	</div>
+
+	<!-- <div class="col-lg-3 col-md-4 col-sm-6">
         <div class="form-group form-group-sm">
 			{!! Form::label('sexo', 'Sexo:') !!}
 			{!! Form::text('sexo', null, ['class'=>'form-control']) !!}
 		</div>
-	</div>
+	</div> -->
+
+	<!-- {!!	Request::path() !!}
+	@if(Route::current()->getName() == 'testing')
+    Hello This is testing
+    @endif -->
+
 	<div class="col-lg-3 col-md-4 col-sm-6">
         <div class="form-group form-group-sm">
 			{!! Form::label('data_entrada', 'Data Entrada:') !!}

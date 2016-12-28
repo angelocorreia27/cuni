@@ -4,5 +4,5 @@
     <div class="pull-right hidden-xs">
       <b>Version</b> 1.0.0
     </div>
-    <strong>Copyright &copy; 2016 - {{\Carbon\Carbon::now()->subDay(0)->format('Y')}} <a href="#">palpiteLDA</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2016 - {{\Carbon\Carbon::now()->subDay(0)->format('Y')}} <a href="#">Palpite - Sociedade Unipessoal, Lda</a>.</strong> All rights reserved.
 </footer>
