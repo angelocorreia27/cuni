@@ -12,7 +12,6 @@ class Fornecedor extends Model {
 
 	//use SoftDeletes;
 
-	//protected $dates = ['deleted_at'];
 	protected $fillable = array('name', 'email', 'endereco', 'Telemovel', 'telefone');
 
 	public function animais(){
