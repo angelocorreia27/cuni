@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Fornecedor extends Model {
 
 	protected $table = 'fornecedores';
-	public $timestamps = true;
+	public $timestamps = false;
 
 	//use SoftDeletes;
 

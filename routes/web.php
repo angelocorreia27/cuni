@@ -26,4 +26,5 @@ Route::group(['middleware' => ['web']], function(){
     Route::resource('animais', 'AnimalController');
     Route::resource('racas', 'RacaController');
     Route::resource('gaiolas', 'GaiolaController');
+    Route::resource('dominios', 'DominioController');
 });

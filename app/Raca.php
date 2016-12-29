@@ -3,14 +3,14 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+//use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Raca extends Model {
 
 	protected $table = 'racas';
-	public $timestamps = true;
+	public $timestamps = false;
 
-	use SoftDeletes;
+//	use SoftDeletes;
 
 	protected $fillable = array('codigo', 'descricao');
 

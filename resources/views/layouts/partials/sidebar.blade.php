@@ -72,6 +72,7 @@
                 <ul class="treeview-menu">
                     <li><a href="{{ url('racas') }}">Raça</a></li>
                     <li><a href="{{ url('gaiolas') }}">Gaiola</a></li>
+                    <li><a href="{{ url('dominios') }}">Dominios</a></li>
                 </ul>
             </li>
 
