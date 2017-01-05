@@ -289,6 +289,7 @@ class ComposerStaticInit7918fdb5a92fcabeec2e7ece51d1e983
     );
 
     public static $classMap = array (
+        'AnimaisAddColumnIdBanda' => __DIR__ . '/../..' . '/database/migrations/2017_01_04_132621_animais_add_column_id_banda.php',
         'CreateAnimaisTable' => __DIR__ . '/../..' . '/database/migrations/2016_09_24_031044_create_animais_table.php',
         'CreateForeignKeys' => __DIR__ . '/../..' . '/database/migrations/2016_09_24_031054_create_foreign_keys.php',
         'CreateFornecedoresTable' => __DIR__ . '/../..' . '/database/migrations/2016_09_24_030451_create_fornecedores_table.php',

@@ -11,6 +11,7 @@ use App\Fornecedor;
 use App\Raca;
 use App\Gaiola;
 use Request;
+use Illuminate\Support\Facades\DB;
 
 class AnimalController extends Controller
 {
@@ -52,7 +53,11 @@ class AnimalController extends Controller
          $fornecedores = Fornecedor::pluck('name','id')->all();
          $gaiolas = Gaiola::pluck('descricao','id')->all();
          $racas = Raca::pluck('descricao','id')->all();
-         return view('animais.create',compact('animal','fornecedores','racas','gaiolas'));
+         $banda =  DB::table('dominio')
+         ->where('dominio','BANDA')->get();
+
+         print_r($banda);
+         return view('animais.create',compact('animal','fornecedores','racas','gaiolas', 'banda'));
     }
 
     /**
