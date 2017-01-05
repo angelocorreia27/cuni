@@ -41,7 +41,7 @@
             <li class="active"><a href="{{ url('home') }}"><i class='fa fa-home'></i> <span>{{ trans('adminlte_lang::message.home') }}</span></a></li>
             
             <li class="treeview">
-                <a href="#"><i class='fa fa-link'></i> <span>Gestão Cunícula</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <a href="#"><i class='fa fa-list'></i> <span>Gestão Cunícula</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="{{ url('animais') }}">Reprodutores</a></li>
                     <li><a href="#">Mapa de Cubrição</a></li>
@@ -68,7 +68,7 @@
             <li><a href="{{ url('providers') }}"><i class='fa fa-truck'></i> <span>Fornecedor</span></a></li> -->
 
             <li class="treeview">
-                <a href="#"><i class='fa fa-link'></i> <span>Configurações</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <a href="#"><i class='fa fa-cogs'></i> <span>Configurações</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="{{ url('racas') }}">Raça</a></li>
                     <li><a href="{{ url('gaiolas') }}">Gaiola</a></li>

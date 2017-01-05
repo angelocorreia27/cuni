@@ -16,7 +16,7 @@
 @section('main-content')
     @include('layouts.shared.alert')
 	<div class="row">
-	    <div class="col-lg-12 col-xs-6">
+	    <div class="col-lg-12">
 	        <div class="box box-primary">
 	            <div class="box-header with-border">
 	              <h3 class="box-title"></h3>
