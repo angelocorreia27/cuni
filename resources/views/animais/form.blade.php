@@ -101,8 +101,14 @@
 	<div class="col-lg-3 col-md-4 col-sm-6">
         <div class="form-group form-group-sm">
 			{!! Form::label('id_banda', 'Banda:') !!}
-			{!! Form::select('id_banda',['' => 'Escolha a Banda'] +$banda,$banda->id, ['class'=>'form-control select2','style'=>'width: 100%;'])  !!}
-		   
+			{{-- {!! Form::select('id_banda',['' => 'Escolha a Banda'] +$fornecedores,$bandas->id, ['class'=>'form-control select2','style'=>'width: 100%;'])  !!}	 --}}	  
+
+			<select name="id_banda" id="id_banda" class="form-control">
+			<option>-- Escolha a Banda --</option>
+				@foreach ($bandas as $banda)				
+					<option value="{{$banda->id}}">{{$banda->significado}}</option>					
+				@endforeach
+			</select>
 		</div>
 	</div> 
 

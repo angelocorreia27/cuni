@@ -31,7 +31,7 @@
 	            <div class="box-body">
 	                <div class="row">
 			            <div class="col-xs-12 table-responsive">
-			                <table class="table table-bordered table-xs" class="tabela-sheet" id="table-stock">
+			                {{-- <table class="table table-bordered table-xs" class="tabela-sheet" id="table-stock">
 				                <thead>
 				                    <tr>		                        
 				                        <th >Gaiola</th>
@@ -72,7 +72,7 @@
 				                    	</tr>
 				                    @endforeach
 				                </tbody>                                     
-				            </table>
+				            </table> --}}
 			            </div>
 			        </div>
 	            </div>

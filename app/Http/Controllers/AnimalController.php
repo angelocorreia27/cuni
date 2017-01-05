@@ -33,7 +33,7 @@ class AnimalController extends Controller
     {
         $animais= Animal::all();
 
-        print_r($animais);
+        //print_r($animais);
 
         if (Request::wantsJson()){
             return $animais;
@@ -53,11 +53,13 @@ class AnimalController extends Controller
          $fornecedores = Fornecedor::pluck('name','id')->all();
          $gaiolas = Gaiola::pluck('descricao','id')->all();
          $racas = Raca::pluck('descricao','id')->all();
-         $banda =  DB::table('dominio')
-         ->where('dominio','BANDA')->get();
 
-         print_r($banda);
-         return view('animais.create',compact('animal','fornecedores','racas','gaiolas', 'banda'));
+         $bandas =  DB::table('dominio')->select('id','significado')
+                                        ->where('dominio','BANDA')->get();
+
+        // print_r($banda);
+
+         return view('animais.create',compact('animal','fornecedores','racas','gaiolas', 'bandas'));
     }
 
     /**
