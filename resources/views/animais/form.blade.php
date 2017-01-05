@@ -54,7 +54,7 @@
         	
         	{!! Form::radio('tipo_uso', 'Reprodução', true) !!}
         	{!! Form::label('Reprodução', 'Reprodução') !!}
-        	{!! Form::radio('tipo_uso', 'Reposição') !!}	
+        	 {!! Form::radio('tipo_uso', 'Reposição') !!}	
 			{!! Form::label('Reposição', 'Reposição') !!}
 			
 		</div>
@@ -90,12 +90,22 @@
 			{!! Form::date('data_entrada', null, ['class'=>'form-control']) !!}
 		</div>
 	</div>
+
 	<div class="col-lg-3 col-md-4 col-sm-6">
         <div class="form-group form-group-sm">
 			{!! Form::label('ciclo_entrada', 'Ciclo Entrada:') !!}
 			{!! Form::text('ciclo_entrada', null, ['class'=>'form-control']) !!}
 		</div>
 	</div>
+
+	<div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="form-group form-group-sm">
+			{!! Form::label('id_banda', 'Banda:') !!}
+			{!! Form::select('id_banda',['' => 'Escolha a Banda'] +$banda,$banda->id, ['class'=>'form-control select2','style'=>'width: 100%;'])  !!}
+		   
+		</div>
+	</div> 
+
 	<div class="col-xs-12">      
         {!! Form::submit($submitButtonText,['class'=>'btn btn-primary pull-right']) !!}      
     </div>

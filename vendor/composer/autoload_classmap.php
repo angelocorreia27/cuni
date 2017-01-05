@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AnimaisAddColumnIdBanda' => $baseDir . '/database/migrations/2017_01_04_132621_animais_add_column_id_banda.php',
     'CreateAnimaisTable' => $baseDir . '/database/migrations/2016_09_24_031044_create_animais_table.php',
     'CreateDominioTable' => $baseDir . '/database/migrations/2017_01_05_103052_create_dominio_table.php',
     'CreateForeignKeys' => $baseDir . '/database/migrations/2016_09_24_031054_create_foreign_keys.php',
