@@ -24,15 +24,15 @@
 	              </h3>
 	              
 				  <div class="pull-right box-tools">
-							<a href="{{ url('animais') }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="Voltar">
+							<a href="{{ url('cuniculas') }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="Voltar">
 								 <i class="fa  fa-arrow-left"></i>
 							</a>
 					</div><!-- /. tools -->
 	            </div><!-- /.box-header -->
 
 	            <div class="box-body">
-	                {!! Form::open(['route'=>'animais.store', null,'id'=>'animais-form']) !!}
-					    @include('animais.form', array('submitButtonText'=>'Add Animal'))
+	                {!! Form::open(['route'=>'cuniculas.store', null,'id'=>'cuniculas-form']) !!}
+					    @include('cuniculas.form', array('submitButtonText'=>'Add Animal'))
 					{!! Form::close() !!}
 	            </div>
 	        </div>

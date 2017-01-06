@@ -35,7 +35,7 @@ $('document').ready(function(){
 
       var url = $(e.relatedTarget).data('url');
       var title = $(e.relatedTarget).data('title');
-      console.log(title);
+     
 
       var id = $(e.relatedTarget).data('id');
       var name = $(e.relatedTarget).data('name');
@@ -47,6 +47,8 @@ $('document').ready(function(){
       modal.find('.modal-title #pTitle').text(title)
 
       $("#delForm").attr('action', url + id );
+
+      //console.log(url + id);
   });
 });
 

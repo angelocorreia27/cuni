@@ -9,19 +9,19 @@
 @endsection
 
 @section('contentheader_description')
-  Animais
+  cuniculas
 @endsection
 
 
 @section('main-content')
    @include('layouts.shared.alert')
 	<div class="row">
-	    <div class="col-lg-12 col-xs-6">
+	    <div class="col-lg-12">
 	        <div class="box box-primary">
 	            <div class="box-header with-border">
 	              <h3 class="box-title"></h3>
 	               <div class="pull-left box-tools">
-	                  <a href="{{ url('animais/create') }}"  class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="">
+	                  <a href="{{ url('cuniculas/create') }}"  class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="">
 	                       <i class="fa fa-plus"></i>
 	                  </a>
 	                  
@@ -31,17 +31,16 @@
 	            <div class="box-body">
 	                <div class="row">
 			            <div class="col-xs-12 table-responsive">
-			                {{-- <table class="table table-bordered table-xs" class="tabela-sheet" id="table-stock">
+			                <table class="table table-bordered table-xs" class="tabela-sheet" id="table-stock">
 				                <thead>
 				                    <tr>		                        
 				                        <th >Gaiola</th>
 				                        <th >Coelho</th>
+				                        <th >Banda</th>
 				                        <th >Sexo</th>
 				                        <th >Tatuagem</th>
 				                        <th >Raça</th>
 				                        <th >Ciclos</th>
-				                        <th >Fornecedor</th>
-				                        <th >Laparos</th>
 				                        <th >Data Entrada</th>
 				                        <th >Peso Entrada</th>
 				                        <th >Ciclo Entrada</th>
@@ -49,30 +48,37 @@
 				                    </tr>
 				                </thead>
 				                <tbody>
-				                    @foreach ($animais as $animal)
+				                    @foreach ($cuniculas as $animal)
 				                    	<tr>
-				                    		<td>{{$animal->gaiola->descricao}}</td>
-				                    		<td></td>
-				                    		<td>{{$animal->sexo}}</td>
+				                    	    <td>{{$animal->id_gaiola}}</td> 
+				                    		<td>{{$animal->tipo_uso}}</td>
+				                    		<td>{{$animal->id_banda}}</td>
+				                    		<td>
+					                    		@if ($animal->sexo == 0)
+					                    			Femea
+					                    		@else
+					                    			Macho
+					                    		@endif
+				                    		</td>
 				                    		<td>{{$animal->tatuagem}}</td>
 				                    		<td>{{$animal->id_raca}}</td>
 				                    		<td>{{$animal->ciclo}}</td>
-				                    		<td>{{$animal->id_fornecedor}}</td>
-				                    		<td></td>
+
 				                    		<td>{{ \Carbon\Carbon::createFromFormat('Y-m-d', $animal->data_entrada)->format('d-m-Y') }}</td>
-				                    		<td>{{$animal->id}}</td>
+
 				                    		<td>{{$animal->ciclo_entrada}}</td>
+				                    		<td>{{$animal->peso_entrada}}</td>
 				                    		<td class="actions">
-						                        <a href="{{ route('animais.edit',$animal->id) }}" class="btn btn-primary btn-xs", data-remote='true'])>      <i class="fa fa-edit"></i>
+						                        <a href="{{ route('cuniculas.edit',$animal->id) }}" class="btn btn-primary btn-xs", data-remote='true'])>      <i class="fa fa-edit"></i>
 						                        </a>                           
-						                        <button type="button" class="btn btn-xs btn-warning btn-flat" data-toggle="modal" data-target="#confirmDelete" data-id="{{ $animal->id }}" data-name="{{ $animal->name }}" data-title="Confirm provider deletion" data-url="/animais/">
+						                         <button type="button" class="btn btn-xs btn-warning btn-flat" data-toggle="modal" data-target="#confirmDelete" data-id="{{ $animal->id }}" data-name="{{ $animal->id }}" data-title="Confirm animal deletion" data-url="/cuniculas/">
 						                            <i class="fa fa-trash"></i>
-						                        </button>  
+						                        </button> 
 						                    </td>
 				                    	</tr>
 				                    @endforeach
 				                </tbody>                                     
-				            </table> --}}
+				            </table> 
 			            </div>
 			        </div>
 	            </div>

@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AddIdBandaToAnimaisTable' => $baseDir . '/database/migrations/2017_01_06_020537_add_id_banda_to_animais_table.php',
     'AnimaisAddColumnIdBanda' => $baseDir . '/database/migrations/2017_01_04_132621_animais_add_column_id_banda.php',
     'CreateAnimaisTable' => $baseDir . '/database/migrations/2016_09_24_031044_create_animais_table.php',
     'CreateDominioTable' => $baseDir . '/database/migrations/2017_01_05_103052_create_dominio_table.php',
@@ -458,6 +459,7 @@ return array(
     'PHP_Token_XOR_EQUAL' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
     'PHP_Token_YIELD' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
     'PHP_Token_YIELD_FROM' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
+    'RemoveFornecedorToAnimaisTable' => $baseDir . '/database/migrations/2017_01_06_001431_remove_fornecedor_to_animais_table.php',
     'SebastianBergmann\\CodeCoverage\\CodeCoverage' => $vendorDir . '/phpunit/php-code-coverage/src/CodeCoverage.php',
     'SebastianBergmann\\CodeCoverage\\CoveredCodeNotExecutedException' => $vendorDir . '/phpunit/php-code-coverage/src/Exception/CoveredCodeNotExecutedException.php',
     'SebastianBergmann\\CodeCoverage\\Driver\\Driver' => $vendorDir . '/phpunit/php-code-coverage/src/Driver/Driver.php',

@@ -11,10 +11,11 @@
 			{!! Form::text('tatuagem', null, ['class'=>'form-control']) !!}
 		</div>
 	</div>
+
 	<div class="col-lg-3 col-md-4 col-sm-6">
         <div class="form-group form-group-sm">
 			{!! Form::label('id_raca', 'Raça:') !!}
-			{!! Form::select('id_raca',['' => 'Escolha o Raca'] + $racas,$animal->id_gaiola, ['class'=>'form-control select2','style'=>'width: 100%;'])  !!}
+			{!! Form::select('id_raca',['' => 'Escolha o Raca'] + $racas,$animal->id_raca, ['class'=>'form-control select2','style'=>'width: 100%;'])  !!}
 		</div>
 	</div>
 	<div class="col-lg-3 col-md-4 col-sm-6">
@@ -23,12 +24,7 @@
 			{!! Form::text('ciclo', null, ['class'=>'form-control']) !!}
 		</div>
 	</div>
-	<div class="col-lg-3 col-md-4 col-sm-6">
-        <div class="form-group form-group-sm">
-			{!! Form::label('id_fornecedor', 'Fornecedor:') !!}
-			{!! Form::select('id_fornecedor',['' => 'Escolha o Fornecedor'] + $fornecedores,$animal->id_fornecedor, ['class'=>'form-control select2','style'=>'width: 100%;'])  !!}
-		</div>
-	</div>
+	
 	<div class="col-lg-3 col-md-4 col-sm-6">
         <div class="form-group form-group-sm">
 			{!! Form::label('data_nascimento', 'Data Nascimento:') !!}
@@ -40,49 +36,35 @@
 			{!! Form::label('peso_entrada', 'Peso Entrada:') !!}
 			{!! Form::text('peso_entrada', null, ['class'=>'form-control']) !!}
 		</div>
-	</div>
+	</div>	
 	
-	<!-- <div class="col-lg-3 col-md-4 col-sm-6">
-        <div class="form-group form-group-sm">
-			{!! Form::label('tipo_uso', 'Tipo Uso:') !!}
-			{!! Form::text('tipo_uso', null, ['class'=>'form-control']) !!}
-		</div>
-	</div> -->
 
-	<div class="col-lg-3 col-md-4 col-sm-6">
-        <div class="form-group form-group-sm">
-        	
-        	{!! Form::radio('tipo_uso', 'Reprodução', true) !!}
+	 <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="form-group form-group-sm">    
+            <div class="control-label" style="margin-top: 5px;">
+              {!! Form::label('tipo_uso', 'Tipo Uso: ')!!}
+            </div>    	
+        	{!! Form::radio('tipo_uso', 'Reproducao', true) !!}
         	{!! Form::label('Reprodução', 'Reprodução') !!}
-        	 {!! Form::radio('tipo_uso', 'Reposição') !!}	
-			{!! Form::label('Reposição', 'Reposição') !!}
-			
+        	{!! Form::radio('tipo_uso', 'Reposicao') !!}	
+			{!! Form::label('Reposição', 'Reposição') !!}			
 		</div>
-	</div>
+	</div> 
 
 	
 	<div class="col-lg-3 col-md-4 col-sm-6">
         <div class="form-group form-group-sm">
-
-        	{!!Form::radio('sexo', 'Femea', true) !!}		
+            <div class="control-label" style="margin-top: 5px;">
+              {!! Form::label('sexo', 'Sexo: ')!!}
+            </div>
+        	{!!Form::radio('sexo', 0, true) !!}		
 			{!! Form::label('Femea', 'Femea') !!}
-        	{!! Form::radio('sexo', 'Macho') !!}
-        	{!! Form::label('Macho', 'Macho') !!}
-			
+        	{!! Form::radio('sexo', 1) !!}
+        	{!! Form::label('Macho', 'Macho') !!}			
 		</div>
 	</div>
 
-	<!-- <div class="col-lg-3 col-md-4 col-sm-6">
-        <div class="form-group form-group-sm">
-			{!! Form::label('sexo', 'Sexo:') !!}
-			{!! Form::text('sexo', null, ['class'=>'form-control']) !!}
-		</div>
-	</div> -->
-
-	<!-- {!!	Request::path() !!}
-	@if(Route::current()->getName() == 'testing')
-    Hello This is testing
-    @endif -->
+	
 
 	<div class="col-lg-3 col-md-4 col-sm-6">
         <div class="form-group form-group-sm">
@@ -101,14 +83,19 @@
 	<div class="col-lg-3 col-md-4 col-sm-6">
         <div class="form-group form-group-sm">
 			{!! Form::label('id_banda', 'Banda:') !!}
-			{{-- {!! Form::select('id_banda',['' => 'Escolha a Banda'] +$fornecedores,$bandas->id, ['class'=>'form-control select2','style'=>'width: 100%;'])  !!}	 --}}	  
+		    {!! Form::select('id_banda',['' => 'Escolha a Banda'] + $bandas,$animal->id_banda, ['class'=>'form-control select2','style'=>'width: 100%;'])  !!} 	  
 
-			<select name="id_banda" id="id_banda" class="form-control">
+			{{-- <select name="id_banda" id="id_banda" class="form-control">
 			<option>-- Escolha a Banda --</option>
 				@foreach ($bandas as $banda)				
-					<option value="{{$banda->id}}">{{$banda->significado}}</option>					
+					
+					@if ($banda->id == $animal->id_banda)
+						<option value="{{$banda->id}}" selected>{{$banda->significado}}</option>	
+					@else
+						<option value="{{$banda->id}}">{{$banda->significado}}</option>	
+					@endif				
 				@endforeach
-			</select>
+			</select>  --}}
 		</div>
 	</div> 
 

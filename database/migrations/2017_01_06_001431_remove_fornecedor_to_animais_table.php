@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AnimaisAddColumnIdBanda extends Migration
+class RemoveFornecedorToAnimaisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,9 @@ class AnimaisAddColumnIdBanda extends Migration
      */
     public function up()
     {
-    
-
-            Schema::table('animais', function ($table) {
-                $table->integer('id_banda')->unsigned();
-
-                $table->foreign('id_banda')->references('id')->on('dominio');
-                    }
-            );
-
-
+        Schema::table('animais', function (Blueprint $table) {
+             $table->dropColumn('id_fornecedor');
+        });
     }
 
     /**
@@ -32,6 +25,8 @@ class AnimaisAddColumnIdBanda extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('animais', function (Blueprint $table) {
+            //
+        });
     }
 }

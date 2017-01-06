@@ -3,16 +3,16 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-//use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Animal extends Model {
 
 	protected $table = 'animais';
 	public $timestamps = false;
 
-	//use SoftDeletes;
+	use SoftDeletes;
 
-	protected $fillable = array('id_gaiola', 'tatuagem', 'id_raca', 'ciclo', 'id_fornecedor', 'data_nascimento', 'peso_entrada', 'tipo_uso', 'sexo', 'data_entrada', 'ciclo_entrada');
+	protected $fillable = array('id_gaiola', 'tatuagem', 'id_raca', 'ciclo', 'data_nascimento', 'peso_entrada', 'tipo_uso', 'sexo', 'data_entrada', 'ciclo_entrada','id_banda');
 
 	public function gaiola()
     {
@@ -23,10 +23,6 @@ class Animal extends Model {
     {
     	return $this->belongsTo('App\Fornecedor');
     }
-
-    
-
-    
 
     public function raca()
     {

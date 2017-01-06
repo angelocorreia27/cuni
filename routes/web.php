@@ -23,7 +23,7 @@ Route::get('/logout', 'Auth\LoginController@logout');
 
 Route::group(['middleware' => ['web']], function(){
 	Route::resource('providers', 'ProviderController');
-    Route::resource('animais', 'AnimalController');
+    Route::resource('cuniculas', 'CuniculaController');
     Route::resource('racas', 'RacaController');
     Route::resource('gaiolas', 'GaiolaController');
     Route::resource('dominios', 'DominioController');
