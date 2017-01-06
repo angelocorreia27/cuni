@@ -43,22 +43,23 @@
             <li class="treeview">
                 <a href="#"><i class='fa fa-list'></i> <span>Gestão Cunícula</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a href="{{ url('cuniculas') }}">Reprodutores</a></li>
-                    <li><a href="#">Mapa de Cubrição</a></li>
-                    <li><a href="#">Cubrição</a></li>
-                    <li><a href="#">Palpação</a></li>
-                    <li><a href="#">Gestação</a></li>
-                    <li><a href="#">Parto</a></li>
-                    <li><a href="#">Desmame</a></li>
-                    <li><a href="#">Obito</a></li>
+                    <li><a href="{{ url('cuniculas') }}">Lista de Reprodutores</a></li>
+                    <li><a href="#">Lista de Reposição</a></li>
+                    <li><a href="#">Mapa de Cobrição</a></li>
+                    <li><a href="#">Lista para Cobrição</a></li>
+                    <li><a href="#">Lista para Palpação</a></li>
+                    <li><a href="#">Lista de Gestantes</a></li>
+                    <li><a href="#">Lista de Partos</a></li>
+                    <li><a href="#">Lista para Desmame</a></li>
+                    <li><a href="#">Lista de Obito</a></li>
                 </ul>
             </li>
 
             <li class="treeview">
                 <a href="#"><i class='fa fa-link'></i> <span>Saída de Animais</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a href="#">Abate</a></li>
-                    <li><a href="#">Venda</a></li>
+                    <li><a href="#">Lista Abate</a></li>
+                    <li><a href="#">Lista Venda</a></li>
                 </ul>
             </li>
 
