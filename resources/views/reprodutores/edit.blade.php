@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('htmlheader_title')
-	Novo
+	Editar
 @endsection
 
 @section('contentheader_title')
@@ -9,33 +9,30 @@
 @endsection
 
 @section('contentheader_description')
-  Novo
+  Editar
 @endsection
 
-
 @section('main-content')
-   @include('layouts.shared.alert')
-	<div class="row">
+     <div class="row">
 	    <div class="col-lg-12">
 	        <div class="box box-default">
 	            <div class="box-header with-border">
-	              <h3 class="box-title">
-	              	 
+	              <h3 class="box-title">	              	 
 	              </h3>
 	              
 				  <div class="pull-right box-tools">
-							<a href="{{ url('cuniculas') }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="Voltar">
+							<a href="{{ url('reprodutores') }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="Voltar">
 								 <i class="fa  fa-arrow-left"></i>
 							</a>
 					</div><!-- /. tools -->
 	            </div><!-- /.box-header -->
 
-	            <div class="box-body">
-	                {!! Form::open(['route'=>'cuniculas.store', null,'id'=>'cuniculas-form']) !!}
-					    @include('cuniculas.form', array('submitButtonText'=>'Add Animal'))
-					{!! Form::close() !!}
-	            </div>
-	        </div>
-	    </div>
+	            <div class="box-body"> 
+					{!! Form::model($reproducao, ['method'=>'PATCH',null,'route'=>['reprodutores.update', $reproducao->id],'id'=>'reprodutores-form'])!!}
+					     @include('reprodutores.form', array('submitButtonText'=>'Editar')) 
+					{!! Form::close() !!} 
+				</div>
+			</div>
+		</div>
 	</div>
 @endsection

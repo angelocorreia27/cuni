@@ -43,14 +43,14 @@
             <li class="treeview">
                 <a href="#"><i class='fa fa-list'></i> <span>Gestão Cunícula</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a href="{{ url('cuniculas') }}">Lista de Reprodutores</a></li>
+                    <li><a href="{{ url('animais') }}">Lista de Animais</a></li>
                     <li><a href="#">Lista de Reposição</a></li>
                     <li><a href="#">Mapa de Cobrição</a></li>
-                    <li><a href="#">Lista para Cobrição</a></li>
-                    <li><a href="#">Lista para Palpação</a></li>
+                    <li><a href="{{ url('reprodutores') }}">Lista de Reprodução</a></li>
+                    <li><a href="#">Lista de Palpação</a></li>
                     <li><a href="#">Lista de Gestantes</a></li>
                     <li><a href="#">Lista de Partos</a></li>
-                    <li><a href="#">Lista para Desmame</a></li>
+                    <li><a href="#">Lista de Desmame</a></li>
                     <li><a href="#">Lista de Obito</a></li>
                 </ul>
             </li>

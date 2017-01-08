@@ -73,13 +73,13 @@
 		</div>
 	</div>
 
-	<div class="col-lg-3 col-md-4 col-sm-6">
+	{{-- <div class="col-lg-3 col-md-4 col-sm-6">
         <div class="form-group form-group-sm">
 			{!! Form::label('ciclo_entrada', 'Ciclo Entrada:') !!}
 			{!! Form::text('ciclo_entrada', null, ['class'=>'form-control']) !!}
 		</div>
 	</div>
-
+ --}}
 	<div class="col-lg-3 col-md-4 col-sm-6">
         <div class="form-group form-group-sm">
 			{!! Form::label('id_banda', 'Banda:') !!}

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
+//use Illuminate\Http\Request;
 
 use App\Http\Requests\AnimalRequest;
 
@@ -10,11 +10,18 @@ use App\Animal;
 use App\Fornecedor;
 use App\Raca;
 use App\Gaiola;
+use App\Dominio;
 use Request;
+
+use DateTime;
+
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+
 
 class AnimalController extends Controller
 {
+
      /**
      * Create a new controller instance.
      *
@@ -24,6 +31,7 @@ class AnimalController extends Controller
     {
         $this->middleware('auth');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -50,18 +58,14 @@ class AnimalController extends Controller
     public function create()
     {
          $animal = new Animal();
-         $fornecedores = Fornecedor::pluck('name','id')->all();
          $gaiolas = Gaiola::pluck('descricao','id')->all();
          $racas = Raca::pluck('descricao','id')->all();
 
-         $bandas =  DB::table('dominio')->select('id','significado')
-                                        ->where('dominio','BANDA')->get();
+         $bandas = Dominio::where('dominio','BANDA')->pluck('significado','id')->all();        
+         
 
-        // print_r($banda);
-
-         return view('animais.create',compact('animal','fornecedores','racas','gaiolas', 'bandas'));
+         return view('animais.create',compact('animal','racas','gaiolas', 'bandas'));
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -99,12 +103,15 @@ class AnimalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Animal $animal)
+    public function edit($animal)
     {
-        $fornecedores = Fornecedor::pluck('name','id')->all();
+         $animal = Animal::find($animal);
+
          $gaiolas = Gaiola::pluck('descricao','id')->all();
          $racas = Raca::pluck('descricao','id')->all();
-        return view('providers.edit',compact('animal','fornecedores','racas','gaiolas'));  
+         $bandas = Dominio::where('dominio','BANDA')->pluck('significado','id')->all();  
+         
+        return view('animais.edit',compact('animal','racas','gaiolas', 'bandas'));  
     }
 
     /**
@@ -114,9 +121,11 @@ class AnimalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(AnimalRequest $request, Animal $animal)
+    public function update(AnimalRequest $request,  $animal)
     {
-         $animal->update($request->all());
+        $animal = Animal::find($animal);
+
+        $animal->update($request->all());
         session()->flash('flash_message','Animal successfully updated.'); //<--FLASH MESSAGE
 
         if (Request::wantsJson()){
@@ -126,24 +135,23 @@ class AnimalController extends Controller
         }
     }
 
+
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-   public function destroy(Animal $animal)
+    public function destroy( $animal)
     {
-        //$cunina = Animal::find($animal);
-       // $cunina->delete();
+        $animal = Animal::find($animal);
+        $animal->deleted_at = new DateTime();
+        $animal->save();
         //$deleted= $animal->delete();
-
-        $deleted=DB::table('animais')->where('id', 1)->delete();
-
         session()->flash('flash_message','Animal was removed with success');
 
         if (Request::wantsJson()){
-            return (string) $deleted;
+            return (string) $animal;
         }else{
             return redirect('animais');
         }

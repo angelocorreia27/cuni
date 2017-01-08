@@ -21,7 +21,7 @@
 	              </h3>
 	              
 				  <div class="pull-right box-tools">
-							<a href="{{ url('cuniculas') }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="Voltar">
+							<a href="{{ url('animais') }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="Voltar">
 								 <i class="fa  fa-arrow-left"></i>
 							</a>
 					</div><!-- /. tools -->
@@ -29,8 +29,8 @@
 
 	            <div class="box-body">
 
-					{!! Form::model($animal, ['method'=>'PATCH',null,'route'=>['cuniculas.update', $animal->id],'id'=>'cuniculas-form'])!!}
-					    @include('cuniculas.form', array('submitButtonText'=>'Edit Animal'))
+					{!! Form::model($animal, ['method'=>'PATCH',null,'route'=>['animais.update', $animal->id],'id'=>'animais-form'])!!}
+					    @include('animais.form', array('submitButtonText'=>'Editar'))
 					{!! Form::close() !!}
 				</div>
 			</div>
