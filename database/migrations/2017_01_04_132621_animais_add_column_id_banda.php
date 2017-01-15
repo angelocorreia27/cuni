@@ -16,11 +16,10 @@ class AnimaisAddColumnIdBanda extends Migration
     
 
             Schema::table('animais', function ($table) {
-                $table->integer('id_banda')->unsigned();
+                //$table->integer('id_banda')->unsigned();
 
-                $table->foreign('id_banda')->references('id')->on('dominio');
-                    }
-            );
+               /// $table->foreign('id_banda')->references('id')->on('dominio');
+           });
 
 
     }

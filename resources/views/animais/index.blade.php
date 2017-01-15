@@ -9,7 +9,7 @@
 @endsection
 
 @section('contentheader_description')
-  cuniculas
+  animais
 @endsection
 
 
@@ -21,7 +21,7 @@
 	            <div class="box-header with-border">
 	              <h3 class="box-title"></h3>
 	               <div class="pull-left box-tools">
-	                  <a href="{{ url('cuniculas/create') }}"  class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="">
+	                  <a href="{{ url('animais/create') }}"  class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="">
 	                       <i class="fa fa-plus"></i>
 	                  </a>
 	                  
@@ -43,12 +43,11 @@
 				                        <th >Ciclos</th>
 				                        <th >Data Entrada</th>
 				                        <th >Peso Entrada</th>
-				                        <th >Ciclo Entrada</th>
 				                        <th></th>
 				                    </tr>
 				                </thead>
 				                <tbody>
-				                    @foreach ($cuniculas as $animal)
+				                    @foreach ($animais as $animal)
 				                    	<tr>
 				                    	    <td>{{$animal->id_gaiola}}</td> 
 				                    		<td>{{$animal->tipo_uso}}</td>
@@ -66,12 +65,11 @@
 
 				                    		<td>{{ \Carbon\Carbon::createFromFormat('Y-m-d', $animal->data_entrada)->format('d-m-Y') }}</td>
 
-				                    		<td>{{$animal->ciclo_entrada}}</td>
 				                    		<td>{{$animal->peso_entrada}}</td>
 				                    		<td class="actions">
-						                        <a href="{{ route('cuniculas.edit',$animal->id) }}" class="btn btn-primary btn-xs", data-remote='true'])>      <i class="fa fa-edit"></i>
+						                        <a href="{{ route('animais.edit',$animal->id) }}" class="btn btn-primary btn-xs", data-remote='true'])>      <i class="fa fa-edit"></i>
 						                        </a>                           
-						                         <button type="button" class="btn btn-xs btn-warning btn-flat" data-toggle="modal" data-target="#confirmDelete" data-id="{{ $animal->id }}" data-name="{{ $animal->id }}" data-title="Confirm animal deletion" data-url="/cuniculas/">
+						                         <button type="button" class="btn btn-xs btn-warning btn-flat" data-toggle="modal" data-target="#confirmDelete" data-id="{{ $animal->id }}" data-name="{{ $animal->id }}" data-title="Confirm animal deletion" data-url="/animais/">
 						                            <i class="fa fa-trash"></i>
 						                        </button> 
 						                    </td>

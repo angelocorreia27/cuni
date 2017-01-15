@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class RemoveFornecedorToAnimaisTable extends Migration
+class RemoveColumnsCicloEntrada extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,7 @@ class RemoveFornecedorToAnimaisTable extends Migration
     public function up()
     {
         Schema::table('animais', function (Blueprint $table) {
-            // $table->dropColumn('id_fornecedor');
-             $table->dropForeign(['id_fornecedor']);
+             $table->dropColumn('ciclo_entrada');
         });
     }
 

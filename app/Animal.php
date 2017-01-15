@@ -12,7 +12,7 @@ class Animal extends Model {
 
 	use SoftDeletes;
 
-	protected $fillable = array('id_gaiola', 'tatuagem', 'id_raca', 'ciclo', 'data_nascimento', 'peso_entrada', 'tipo_uso', 'sexo', 'data_entrada', 'ciclo_entrada','id_banda');
+	protected $fillable = array('id_gaiola', 'tatuagem', 'id_raca', 'ciclo', 'data_nascimento', 'peso_entrada', 'tipo_uso', 'sexo', 'data_entrada', 'id_banda');
 
 	public function gaiola()
     {
