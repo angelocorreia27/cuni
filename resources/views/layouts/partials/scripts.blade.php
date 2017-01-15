@@ -27,6 +27,8 @@
         $("#table-providers").DataTable();
         $("#table-racas").DataTable();
         $("#table-gaiolas").DataTable();
+        $("#table-maternidades").DataTable();
+        $("#table-reposicoes").DataTable();
       });
 </script>
 
