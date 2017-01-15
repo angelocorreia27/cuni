@@ -289,7 +289,6 @@ class ComposerStaticInit7918fdb5a92fcabeec2e7ece51d1e983
     );
 
     public static $classMap = array (
-        'AddIdBandaToAnimaisTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_06_020537_add_id_banda_to_animais_table.php',
         'AnimaisAddColumnIdBanda' => __DIR__ . '/../..' . '/database/migrations/2017_01_04_132621_animais_add_column_id_banda.php',
         'CreateAnimaisTable' => __DIR__ . '/../..' . '/database/migrations/2016_09_24_031044_create_animais_table.php',
         'CreateDominioTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_05_103052_create_dominio_table.php',
@@ -298,6 +297,7 @@ class ComposerStaticInit7918fdb5a92fcabeec2e7ece51d1e983
         'CreateGaiolasTable' => __DIR__ . '/../..' . '/database/migrations/2016_09_24_030451_create_gaiolas_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreateRacasTable' => __DIR__ . '/../..' . '/database/migrations/2016_09_24_030451_create_racas_table.php',
+        'CreateTableMaternidade' => __DIR__ . '/../..' . '/database/migrations/2017_01_15_232037_create_table_maternidade.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
         'DropColumnsAnimais' => __DIR__ . '/../..' . '/database/migrations/2016_12_23_155530_drop_columns_animais.php',
