@@ -5,16 +5,19 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 //use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Reproducao extends Model {
+class Reposicao extends Model {
 
-	protected $table = 'reproducao';
+	protected $table = 'Reposicao';
 	public $timestamps = false;
 
 	//use SoftDeletes;
 
 	protected $fillable = array('id_gaiola', 'id_maternidade', 'data_entrada', 'quantidade', 'dias_fase', 'peso', 'prev_saida', 'prev_quantidade');
 
-
+   public function gaiola()
+    {
+    	return $this->belongsTo('App\Gaiola','id_gaiola');
+    }
 	
 
 }

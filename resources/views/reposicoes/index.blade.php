@@ -9,7 +9,7 @@
 @endsection
 
 @section('contentheader_description')
-  Gaiolas
+  Reposição
 @endsection
 
 
@@ -21,7 +21,7 @@
 	            <div class="box-header with-border">
 	              <h3 class="box-title"></h3>
 	               <div class="pull-left box-tools">
-	                  <a href="{{ url('gaiolas/create') }}"  class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="">
+	                  <a href="{{ url('reposicoes/create') }}"  class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="Novo">
 	                       <i class="fa fa-plus"></i>
 	                  </a>
 	                  
@@ -31,23 +31,35 @@
 	            <div class="box-body">
 	                <div class="row">
 			            <div class="col-xs-12 table-responsive">
-			                <table class="table table-bordered table-xs" class="tabela-sheet" id="table-gaiolas">
+			                 <table class="table table-bordered table-xs" class="tabela-sheet" id="table-reposicoes">
 				                <thead>
-				                    <tr>		                        
-				                        <th >Codigo</th>
-				                        <th >Descrição</th>
+				                    <tr>		             
+				                        <th >Gaiola</th>
+				                        <th >Maternidade</th>
+				                        <th >Data Entrada</th>
+				                        <th >Quantidade</th>
+				                        <th >Dias de Fase</th>
+				                        <th >Peso</th>
+				                        <th >Preveção saida</th>
+				                        <th >Preveção de Quantidade</th>
 				                        <th></th>
 				                    </tr>
 				                </thead>
 				                <tbody>
-				                    @foreach ($gaiolas as $gaiola)
+				                    @foreach ($reposicoes as $reposicao)
 				                        <tr>
-					                    	<td>{{$gaiola->codigo}}</td>
-					                    	<td>{{$gaiola->descricao}}</td>
+					                    	<td>{{$reposicao->gaiola->descricao}}</td>
+					                    	<td>{{$reposicao->id_maternidade}}</td>
+					                    	<td>{{ \Carbon\Carbon::createFromFormat('Y-m-d', $reposicao->data_entrada)->format('d-m-Y') }}</td>
+					                    	<td>{{$reposicao->quantidade}}</td>
+					                    	<td>{{$reposicao->dias_fase}}</td>
+					                    	<td>{{$reposicao->peso}}</td>
+					                    	<td>{{ \Carbon\Carbon::createFromFormat('Y-m-d', $reposicao->prev_saida)->format('d-m-Y') }}</td>
+					                    	<td>{{$reposicao->quantidade}}</td>
 					                    	<td class="actions">
-						                        <a href="{{ route('gaiolas.edit',$gaiola->id) }}" class="btn btn-primary btn-xs", data-remote='true'])>      <i class="fa fa-edit"></i>
+						                        <a href="{{ route('reposicoes.edit',$reposicao->id) }}" class="btn btn-primary btn-xs", data-remote='true'])>      <i class="fa fa-edit"></i>
 						                        </a>                           
-						                        <button type="button" class="btn btn-xs btn-warning btn-flat" data-toggle="modal" data-target="#confirmDelete" data-id="{{ $gaiola->id }}" data-name="{{ $gaiola->name }}" data-title="Confirm provider deletion" data-url="/gaiolas/">
+						                        <button type="button" class="btn btn-xs btn-warning btn-flat" data-toggle="modal" data-target="#confirmDelete" data-id="{{ $reposicao->id }}" data-name="{{ $reposicao->id }}" data-title="Confirm reposicao deletion" data-url="/reposicoes/">
 						                            <i class="fa fa-trash"></i>
 						                        </button>  
 						                    </td>
