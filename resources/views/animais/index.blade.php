@@ -49,9 +49,9 @@
 				                <tbody>
 				                    @foreach ($animais as $animal)
 				                    	<tr>
-				                    	    <td>{{$animal->id_gaiola}}</td> 
+				                    	    <td>{{$animal->gaiola->descricao}}</td> 
 				                    		<td>{{$animal->tipo_uso}}</td>
-				                    		<td>{{$animal->id_banda}}</td>
+				                    		<td>{{$animal->banda->significado}}</td>
 				                    		<td>
 					                    		@if ($animal->sexo == 0)
 					                    			Femea
@@ -60,7 +60,7 @@
 					                    		@endif
 				                    		</td>
 				                    		<td>{{$animal->tatuagem}}</td>
-				                    		<td>{{$animal->id_raca}}</td>
+				                    		<td>{{$animal->raca->descricao}}</td>
 				                    		<td>{{$animal->ciclo}}</td>
 
 				                    		<td>{{ \Carbon\Carbon::createFromFormat('Y-m-d', $animal->data_entrada)->format('d-m-Y') }}</td>

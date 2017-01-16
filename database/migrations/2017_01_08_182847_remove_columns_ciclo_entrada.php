@@ -13,9 +13,9 @@ class RemoveColumnsCicloEntrada extends Migration
      */
     public function up()
     {
-        Schema::table('animais', function (Blueprint $table) {
-             $table->dropColumn('ciclo_entrada');
-        });
+        // Schema::table('animais', function (Blueprint $table) {
+        //      $table->dropColumn('ciclo_entrada');
+        // });
     }
 
     /**
@@ -25,8 +25,8 @@ class RemoveColumnsCicloEntrada extends Migration
      */
     public function down()
     {
-        Schema::table('animais', function (Blueprint $table) {
-            //
-        });
+        // Schema::table('animais', function (Blueprint $table) {
+        //     //
+        // });
     }
 }

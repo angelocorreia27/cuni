@@ -28,4 +28,6 @@ Route::group(['middleware' => ['web']], function(){
     Route::resource('racas', 'RacaController');
     Route::resource('gaiolas', 'GaiolaController');
     Route::resource('dominios', 'DominioController');
+    Route::resource('reposicoes', 'ReposicaoController');
+    Route::resource('maternidades', 'MaternidadeController');
 });

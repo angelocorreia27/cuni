@@ -6,8 +6,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\MaternidadeRequest;
 
-use App\Raca;
-use App\Reproducao;
+use App\Gaiola;
+use App\Maternidade;
 use Request;
 
 use DateTime;
@@ -36,14 +36,14 @@ class MaternidadeController extends Controller
      */
     public function index()
     {
-        $Maternidades= Maternidade::all();
+        $maternidades= Maternidade::all();
+        $gaiolas= Gaiola::all();
 
-        //print_r($Maternidades);
 
         if (Request::wantsJson()){
-            return $Maternidades;
+            return $maternidaes;
         }else{
-            return view('Maternidades.index',compact('Maternidades'));
+            return view('maternidades.index',compact('maternidades','gaiolas'));
         }
     }
 
@@ -54,14 +54,10 @@ class MaternidadeController extends Controller
      */
     public function create()
     {
-         $Maternidade = new Maternidade();
-         $gaiolas = Gaiola::pluck('descricao','id')->all();
-         $racas = Raca::pluck('descricao','id')->all();
+         $maternidade = new Maternidade();
+         $gaiolas = Gaiola::pluck('descricao','id')->all();         
 
-         $bandas = Dominio::where('dominio','BANDA')->pluck('significado','id')->all();        
-         
-
-         return view('Maternidades.create',compact('Maternidade','racas','gaiolas', 'bandas'));
+         return view('maternidades.create',compact('maternidade','gaiolas'));
     }
     /**
      * Store a newly created resource in storage.
@@ -72,14 +68,14 @@ class MaternidadeController extends Controller
     public function store(MaternidadeRequest $request)
     {
         
-         $Maternidade = Maternidade::create($request->all());
+         $maternidade = Maternidade::create($request->all());
 
         session()->flash('flash_message','Maternidade successfully added.'); //<--FLASH MESSAGE
 
         if (Request::wantsJson()){
-            return $Maternidade;
+            return $maternidade;
         }else{             
-             return redirect('Maternidades');            
+             return redirect('maternidades');            
         }
     }
 
@@ -100,15 +96,13 @@ class MaternidadeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($Maternidade)
+    public function edit(Maternidade $maternidade)
     {
-         $Maternidade = Maternidade::find($Maternidade);
+         //$maternidade = Maternidade::find($maternidade);
 
-         $gaiolas = Gaiola::pluck('descricao','id')->all();
-         $racas = Raca::pluck('descricao','id')->all();
-         $bandas = Dominio::where('dominio','BANDA')->pluck('significado','id')->all();  
+        $gaiolas = Gaiola::pluck('descricao','id')->all();
          
-        return view('Maternidades.edit',compact('Maternidade','racas','gaiolas', 'bandas'));  
+        return view('maternidades.edit',compact('maternidade','gaiolas'));  
     }
 
     /**
@@ -118,17 +112,16 @@ class MaternidadeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(MaternidadeRequest $request,  $Maternidade)
+    public function update(MaternidadeRequest $request,  Maternidade $maternidade)
     {
-        $Maternidade = Maternidade::find($Maternidade);
 
-        $Maternidade->update($request->all());
+        $maternidade->update($request->all());
         session()->flash('flash_message','Maternidade successfully updated.'); //<--FLASH MESSAGE
 
         if (Request::wantsJson()){
-            return $Maternidade;
+            return $maternidade;
         }else{
-            return redirect('Maternidades');
+            return redirect('maternidades');
         }
     }
 
@@ -139,18 +132,18 @@ class MaternidadeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy( $Maternidade)
+    public function destroy(Maternidade $maternidade)
     {
-        $Maternidade = Maternidade::find($Maternidade);
-        $Maternidade->deleted_at = new DateTime();
-        $Maternidade->save();
-        //$deleted= $Maternidade->delete();
+       
+       //// $maternidade->deleted_at = new DateTime();
+        //$maternidade->save();
+        $deleted= $maternidade->delete();
         session()->flash('flash_message','Maternidade was removed with success');
 
         if (Request::wantsJson()){
-            return (string) $Maternidade;
+            return (string) $deleted;
         }else{
-            return redirect('Maternidades');
+            return redirect('maternidades');
         }
     }
 }

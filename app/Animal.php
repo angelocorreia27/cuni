@@ -16,7 +16,7 @@ class Animal extends Model {
 
 	public function gaiola()
     {
-    	return $this->belongsTo('App\Gaiola');
+    	return $this->belongsTo('App\Gaiola','id_gaiola');
     }
 
 	public function fornecedor()
@@ -26,7 +26,13 @@ class Animal extends Model {
 
     public function raca()
     {
-    	return $this->belongsTo('App\Raca');
+    	return $this->belongsTo('App\Raca', 'id_raca');
     }
+
+    public function banda()
+    {
+        return $this->belongsTo('App\Dominio', 'id_banda');
+    }
+
 
 }

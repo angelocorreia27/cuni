@@ -12,8 +12,6 @@ class Reproducao extends Model {
 
 	//use SoftDeletes;
 
-	protected $fillable = array('id_gaiola', 'id_reprodutor', 'id_matriz', 'data_cobertura', 'prev_parto', 'rep_cio', 'aborto', 'data_parto');
-
-	
+	protected $fillable = array('id_gaiola', 'id_maternidade', 'data_entrada', 'quantidade', 'dias_fase', 'peso', 'prev_saida', 'prev_quantidade');	
 
 }
