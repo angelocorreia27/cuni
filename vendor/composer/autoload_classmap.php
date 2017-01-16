@@ -6,12 +6,15 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+<<<<<<< HEAD
     'Acacha\\AdminLTETemplateLaravel\\AdminLTE' => $vendorDir . '/acacha/admin-lte-template-laravel/src/AdminLTE.php',
     'Acacha\\AdminLTETemplateLaravel\\Console\\AdminLTE' => $vendorDir . '/acacha/admin-lte-template-laravel/src/Console/AdminLTE.php',
     'Acacha\\AdminLTETemplateLaravel\\Facades\\AdminLTE' => $vendorDir . '/acacha/admin-lte-template-laravel/src/Facades/AdminLTE.php',
     'Acacha\\AdminLTETemplateLaravel\\Providers\\AdminLTETemplateServiceProvider' => $vendorDir . '/acacha/admin-lte-template-laravel/src/Providers/AdminLTETemplateServiceProvider.php',
     'Acacha\\AdminLTETemplateLaravel\\app\\Exceptions\\Handler' => $vendorDir . '/acacha/admin-lte-template-laravel/src/Exceptions/Handler.php',
     'AddFkMaternidadeTable' => $baseDir . '/database/migrations/2017_01_15_212410_add_fk_maternidade_table.php',
+=======
+>>>>>>> e225b5427dfc396666686e38154fbf5ea8ebe63e
     'AnimaisAddColumnIdBanda' => $baseDir . '/database/migrations/2017_01_04_132621_animais_add_column_id_banda.php',
     'App\\Animal' => $baseDir . '/app/Animal.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
@@ -84,8 +87,12 @@ return array(
     'CreateMaternidadeTable' => $baseDir . '/database/migrations/2017_01_15_211823_create_maternidade_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreateRacasTable' => $baseDir . '/database/migrations/2016_09_24_030451_create_racas_table.php',
+<<<<<<< HEAD
     'CreateReposicaoTable' => $baseDir . '/database/migrations/2017_01_15_202338_create_reposicao_table.php',
     'CreateTableReproducao' => $baseDir . '/database/migrations/2017_01_08_185527_create_table_reproducao.php',
+=======
+    'CreateTableMaternidade' => $baseDir . '/database/migrations/2017_01_15_232037_create_table_maternidade.php',
+>>>>>>> e225b5427dfc396666686e38154fbf5ea8ebe63e
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'Cron\\AbstractField' => $vendorDir . '/mtdowling/cron-expression/src/Cron/AbstractField.php',
     'Cron\\CronExpression' => $vendorDir . '/mtdowling/cron-expression/src/Cron/CronExpression.php',
