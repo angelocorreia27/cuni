@@ -316,15 +316,15 @@ class ComposerStaticInit7918fdb5a92fcabeec2e7ece51d1e983
     );
 
     public static $classMap = array (
-<<<<<<< HEAD
+// <<<<<<< HEAD
         'Acacha\\AdminLTETemplateLaravel\\AdminLTE' => __DIR__ . '/..' . '/acacha/admin-lte-template-laravel/src/AdminLTE.php',
         'Acacha\\AdminLTETemplateLaravel\\Console\\AdminLTE' => __DIR__ . '/..' . '/acacha/admin-lte-template-laravel/src/Console/AdminLTE.php',
         'Acacha\\AdminLTETemplateLaravel\\Facades\\AdminLTE' => __DIR__ . '/..' . '/acacha/admin-lte-template-laravel/src/Facades/AdminLTE.php',
         'Acacha\\AdminLTETemplateLaravel\\Providers\\AdminLTETemplateServiceProvider' => __DIR__ . '/..' . '/acacha/admin-lte-template-laravel/src/Providers/AdminLTETemplateServiceProvider.php',
         'Acacha\\AdminLTETemplateLaravel\\app\\Exceptions\\Handler' => __DIR__ . '/..' . '/acacha/admin-lte-template-laravel/src/Exceptions/Handler.php',
         'AddFkMaternidadeTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_15_212410_add_fk_maternidade_table.php',
-=======
->>>>>>> e225b5427dfc396666686e38154fbf5ea8ebe63e
+// =======
+// >>>>>>> e225b5427dfc396666686e38154fbf5ea8ebe63e
         'AnimaisAddColumnIdBanda' => __DIR__ . '/../..' . '/database/migrations/2017_01_04_132621_animais_add_column_id_banda.php',
         'App\\Animal' => __DIR__ . '/../..' . '/app/Animal.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
@@ -397,12 +397,12 @@ class ComposerStaticInit7918fdb5a92fcabeec2e7ece51d1e983
         'CreateMaternidadeTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_15_211823_create_maternidade_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreateRacasTable' => __DIR__ . '/../..' . '/database/migrations/2016_09_24_030451_create_racas_table.php',
-<<<<<<< HEAD
+//<<<<<<< HEAD
         'CreateReposicaoTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_15_202338_create_reposicao_table.php',
         'CreateTableReproducao' => __DIR__ . '/../..' . '/database/migrations/2017_01_08_185527_create_table_reproducao.php',
-=======
+//=======
         'CreateTableMaternidade' => __DIR__ . '/../..' . '/database/migrations/2017_01_15_232037_create_table_maternidade.php',
->>>>>>> e225b5427dfc396666686e38154fbf5ea8ebe63e
+// >>>>>>> e225b5427dfc396666686e38154fbf5ea8ebe63e
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
         'Cron\\AbstractField' => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron/AbstractField.php',
         'Cron\\CronExpression' => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron/CronExpression.php',
