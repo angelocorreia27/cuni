@@ -328,6 +328,8 @@ class ComposerStaticInit7918fdb5a92fcabeec2e7ece51d1e983
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreateRacasTable' => __DIR__ . '/../..' . '/database/migrations/2016_09_24_030451_create_racas_table.php',
         'CreateReposicaoTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_15_202338_create_reposicao_table.php',
+        'CreateTableAbate' => __DIR__ . '/../..' . '/database/migrations/2017_01_19_124952_create_table_abate.php',
+        'CreateTableEngorda' => __DIR__ . '/../..' . '/database/migrations/2017_01_19_124925_create_table_engorda.php',
         'CreateTableReproducao' => __DIR__ . '/../..' . '/database/migrations/2017_01_08_185527_create_table_reproducao.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',

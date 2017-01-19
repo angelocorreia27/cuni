@@ -46,11 +46,12 @@
                     <li><a href="{{ url('animais') }}">Lista de Animais</a></li>
                     <li><a href="{{ url('reposicoes') }}">Lista de Reposição</a></li>
                     <li><a href="#">Mapa de Cobrição</a></li>
-                    <li><a href="{{ url('reprodutores') }}">Lista de Reprodução</a></li>
-                    <li><a href="#">Lista de Palpação</a></li>
-                    <li><a href="#">Lista de Gestantes</a></li>
+                    <li><a href="{{ url('reprodutores') }}">Lista para Cobrição</a></li>
+                    <li><a href="{{ url('reprodutores') }}">Lista para Palpação</a></li>
+                    <li><a href="{{ url('reprodutores') }}">Lista de Gestantes</a></li>
                     <li><a href="{{ url('maternidades') }}">Lista de Partos</a></li>
-                    <li><a href="#">Lista de Desmame</a></li>
+                    <li><a href="{{ url('maternidades') }}">Lista para Desmame</a></li>
+                    <li><a href="{{ url('engordas') }}">Lista Engorda</a></li>
                     <li><a href="{{ url('obitos') }}">Lista de Obito</a></li>
                 </ul>
             </li>
@@ -58,7 +59,7 @@
             <li class="treeview">
                 <a href="#"><i class='fa fa-link'></i> <span>Saída de Animais</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a href="#">Lista Abate</a></li>
+                    <li><a href="{{ url('abates') }}">Lista Abate</a></li>
                     <li><a href="#">Lista Venda</a></li>
                 </ul>
             </li>
