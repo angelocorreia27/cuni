@@ -51,7 +51,7 @@
                     <li><a href="#">Lista de Gestantes</a></li>
                     <li><a href="{{ url('maternidades') }}">Lista de Partos</a></li>
                     <li><a href="#">Lista de Desmame</a></li>
-                    <li><a href="#">Lista de Obito</a></li>
+                    <li><a href="{{ url('obitos') }}">Lista de Obito</a></li>
                 </ul>
             </li>
 
