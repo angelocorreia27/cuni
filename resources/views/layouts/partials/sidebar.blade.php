@@ -49,6 +49,7 @@
                     <li><a href="{{ url('reprodutores') }}">Lista para Cobrição</a></li>
                     <li><a href="{{ url('reprodutores') }}">Lista para Palpação</a></li>
                     <li><a href="{{ url('reprodutores') }}">Lista de Gestantes</a></li>
+                    <li><a href="{{ url('reprodutores') }}">Lista para Partos</a></li>
                     <li><a href="{{ url('maternidades') }}">Lista de Partos</a></li>
                     <li><a href="{{ url('maternidades') }}">Lista para Desmame</a></li>
                     <li><a href="{{ url('engordas') }}">Lista Engorda</a></li>

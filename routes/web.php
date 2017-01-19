@@ -31,6 +31,6 @@ Route::group(['middleware' => ['web']], function(){
     Route::resource('reposicoes', 'ReposicaoController');
     Route::resource('maternidades', 'MaternidadeController');
     Route::resource('obitos', 'ObitoController');
-    Route::resource('engorda', 'EngordaController');
+    Route::resource('engordas', 'EngordaController');
     Route::resource('abates', 'AbateController');
 });
