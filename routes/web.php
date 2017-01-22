@@ -30,6 +30,9 @@ Route::group(['middleware' => ['web']], function(){
     Route::resource('dominios', 'DominioController');
     Route::resource('reposicoes', 'ReposicaoController');
     Route::resource('maternidades', 'MaternidadeController');
+    Route::resource('obitos', 'ObitoController');
+    Route::resource('engordas', 'EngordaController');
+    Route::resource('abates', 'AbateController');
     Route::resource('cobricoes','CobricaoController');
 });
 

@@ -14,10 +14,16 @@ return array(
     'CreateFornecedoresTable' => $baseDir . '/database/migrations/2016_09_24_030451_create_fornecedores_table.php',
     'CreateGaiolasTable' => $baseDir . '/database/migrations/2016_09_24_030451_create_gaiolas_table.php',
     'CreateMaternidadeTable' => $baseDir . '/database/migrations/2017_01_15_211823_create_maternidade_table.php',
+    'CreateObitoTable' => $baseDir . '/database/migrations/2017_01_16_163506_create_obito_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreateRacasTable' => $baseDir . '/database/migrations/2016_09_24_030451_create_racas_table.php',
     'CreateReposicaoTable' => $baseDir . '/database/migrations/2017_01_15_202338_create_reposicao_table.php',
+<<<<<<< HEAD
     'CreateTableMaternidade' => $baseDir . '/database/migrations/2017_01_15_232037_create_table_maternidade.php',
+=======
+    'CreateTableAbate' => $baseDir . '/database/migrations/2017_01_19_124952_create_table_abate.php',
+    'CreateTableEngorda' => $baseDir . '/database/migrations/2017_01_19_124925_create_table_engorda.php',
+>>>>>>> a89f79374e050274c772bc49fb0054fbb9d883b4
     'CreateTableReproducao' => $baseDir . '/database/migrations/2017_01_08_185527_create_table_reproducao.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
