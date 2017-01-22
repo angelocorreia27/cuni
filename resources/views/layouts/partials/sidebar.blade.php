@@ -45,18 +45,17 @@
                 <ul class="treeview-menu">
                     <li><a href="{{ url('animais') }}">Lista de Animais</a></li>
                     <li><a href="{{ url('reposicoes') }}">Lista de Reposição</a></li>
-<<<<<<< HEAD
+
                     <li><a href="{{ url('cobricoes') }}">Mapa de Cobrição</a></li>
                     <li><a href="{{ url('reprodutores') }}">Lista de Reprodução</a></li>
                     <li><a href="#">Lista de Palpação</a></li>
                     <li><a href="#">Lista de Gestantes</a></li>
-=======
-                    <li><a href="#">Mapa de Cobrição</a></li>
+
                     <li><a href="{{ url('reprodutores') }}">Lista para Cobrição</a></li>
                     <li><a href="{{ url('reprodutores') }}">Lista para Palpação</a></li>
                     <li><a href="{{ url('reprodutores') }}">Lista de Gestantes</a></li>
                     <li><a href="{{ url('reprodutores') }}">Lista para Partos</a></li>
->>>>>>> a89f79374e050274c772bc49fb0054fbb9d883b4
+
                     <li><a href="{{ url('maternidades') }}">Lista de Partos</a></li>
                     <li><a href="{{ url('maternidades') }}">Lista para Desmame</a></li>
                     <li><a href="{{ url('engordas') }}">Lista Engorda</a></li>
