@@ -33,12 +33,12 @@
 			            <div class="col-xs-12 table-responsive">
 			                <table class="table table-bordered table-xs" class="tabela-sheet" id="table-stock">
 				                <thead>
-				                    <tr>		                        
+				                    <tr>	
+				                        <th >Tatuagem</th>	                        
 				                        <th >Gaiola</th>
 				                        <th >Coelho</th>
 				                        <th >Banda</th>
-				                        <th >Sexo</th>
-				                        <th >Tatuagem</th>
+				                        <th >Sexo</th>				                        
 				                        <th >Raça</th>
 				                        <th >Ciclos</th>
 				                        <th >Data Entrada</th>
@@ -49,6 +49,7 @@
 				                <tbody>
 				                    @foreach ($animais as $animal)
 				                    	<tr>
+				                    	    <td>{{$animal->tatuagem}}</td>
 				                    	    <td>{{$animal->gaiola->descricao}}</td> 
 				                    		<td>{{$animal->tipo_uso}}</td>
 				                    		<td>{{$animal->banda->significado}}</td>
@@ -59,7 +60,7 @@
 					                    			Macho
 					                    		@endif
 				                    		</td>
-				                    		<td>{{$animal->tatuagem}}</td>
+				                    		
 				                    		<td>{{$animal->raca->descricao}}</td>
 				                    		<td>{{$animal->ciclo}}</td>
 

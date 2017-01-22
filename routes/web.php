@@ -30,4 +30,8 @@ Route::group(['middleware' => ['web']], function(){
     Route::resource('dominios', 'DominioController');
     Route::resource('reposicoes', 'ReposicaoController');
     Route::resource('maternidades', 'MaternidadeController');
+    Route::resource('cobricoes','CobricaoController');
 });
+
+Route::get('bandas','CobricaoController@getBanda');
+Route::get('getListTatuagem/{sexo}/{banda}','CobricaoController@getListTatuagem');

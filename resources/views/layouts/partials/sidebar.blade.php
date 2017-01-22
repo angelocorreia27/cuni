@@ -45,7 +45,7 @@
                 <ul class="treeview-menu">
                     <li><a href="{{ url('animais') }}">Lista de Animais</a></li>
                     <li><a href="{{ url('reposicoes') }}">Lista de Reposição</a></li>
-                    <li><a href="#">Mapa de Cobrição</a></li>
+                    <li><a href="{{ url('cobricoes') }}">Mapa de Cobrição</a></li>
                     <li><a href="{{ url('reprodutores') }}">Lista de Reprodução</a></li>
                     <li><a href="#">Lista de Palpação</a></li>
                     <li><a href="#">Lista de Gestantes</a></li>

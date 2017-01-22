@@ -60,10 +60,8 @@ class AnimalController extends Controller
          $animal = new Animal();
          $gaiolas = Gaiola::pluck('descricao','id')->all();
          $racas = Raca::pluck('descricao','id')->all();
-
-         $bandas = Dominio::where('dominio','BANDA')->pluck('significado','id')->all();        
-         
-
+          $bandas = Dominio::where('dominio','BANDA')->pluck('significado','id')->all();  
+        
          return view('animais.create',compact('animal','racas','gaiolas', 'bandas'));
     }
     /**
@@ -156,4 +154,7 @@ class AnimalController extends Controller
             return redirect('animais');
         }
     }
+
+
+
 }

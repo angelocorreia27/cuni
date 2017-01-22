@@ -1,16 +1,17 @@
 <div class="row">
-	<div class="col-lg-3 col-md-4 col-sm-6">
-        <div class="form-group form-group-sm">
-			{!! Form::label('id_gaiola', 'Gaiola:') !!}
-			{!! Form::select('id_gaiola',['' => 'Escolha o Gaiola'] + $gaiolas,$animal->id_gaiola, ['class'=>'form-control select2','style'=>'width: 100%;'])  !!}
-		</div>
-	</div>
-	<div class="col-lg-3 col-md-4 col-sm-6">
+    <div class="col-lg-3 col-md-4 col-sm-6">
         <div class="form-group form-group-sm">
 			{!! Form::label('tatuagem', 'Tatuagem:') !!}
 			{!! Form::text('tatuagem', null, ['class'=>'form-control']) !!}
 		</div>
 	</div>
+
+	<div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="form-group form-group-sm">
+			{!! Form::label('id_gaiola', 'Gaiola:') !!}
+			{!! Form::select('id_gaiola',['' => 'Escolha o Gaiola'] + $gaiolas,$animal->id_gaiola, ['class'=>'form-control select2','style'=>'width: 100%;'])  !!}
+		</div>
+	</div>	
 
 	<div class="col-lg-3 col-md-4 col-sm-6">
         <div class="form-group form-group-sm">

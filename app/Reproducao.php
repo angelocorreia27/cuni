@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Reproducao extends Model {
 
-	protected $table = 'reprodutores';
+	protected $table = 'reproducao';
 	public $timestamps = false;
 
 	//use SoftDeletes;
