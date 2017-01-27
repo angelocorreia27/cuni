@@ -23,8 +23,11 @@ class EngordaRequest extends FormRequest
      */
     public function rules()
     {
-         return [
-        
-         ];
+          return [
+            'id_maternidade' => 'required',
+            'id_gaiola' => 'required',
+            'quantidade' => 'required',
+            'data_entrada' => 'required'
+        ];
     }
 }

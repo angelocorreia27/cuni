@@ -23,8 +23,13 @@ class MaternidadeRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
+                   return [
+            'id_reproducao' => 'required',
+            'id_gaiola' =>'required',
+            'data_parto'  => 'required',
+            'n_vivos'  => 'required',
+            'n_mortos'=>'required'
+
         ];
     }
 }

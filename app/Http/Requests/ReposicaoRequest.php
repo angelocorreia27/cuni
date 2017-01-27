@@ -23,8 +23,13 @@ class ReposicaoRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
+
+            return [
+            'id_maternidade' => 'required',
+            'id_gaiola' =>'required',
+            'data_entrada'  => 'required',
+            'quantidade'  => 'required'
+
         ];
     }
 }

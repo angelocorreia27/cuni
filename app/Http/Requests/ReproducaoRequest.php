@@ -23,8 +23,13 @@ class ReproducaoRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
+         return [
+            'id_gaiola' =>'required',
+            'id_reprodutor'  => 'required',
+            'id_matriz'  => 'required',
+            'data_cobertura'  => 'required'
+
+
         ];
     }
 }

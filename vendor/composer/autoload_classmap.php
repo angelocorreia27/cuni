@@ -7,9 +7,12 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'AddFkMaternidadeTable' => $baseDir . '/database/migrations/2017_01_15_212410_add_fk_maternidade_table.php',
+    'AlterTableAbateModifyColumn' => $baseDir . '/database/migrations/2017_01_27_134451_alter_table_abate_modify_column.php',
+    'AlterTableAnimal' => $baseDir . '/database/migrations/2017_01_27_165520_alter_table_animal.php',
     'AnimaisAddColumnIdBanda' => $baseDir . '/database/migrations/2017_01_04_132621_animais_add_column_id_banda.php',
     'CreateAnimaisTable' => $baseDir . '/database/migrations/2016_09_24_031044_create_animais_table.php',
     'CreateDominioTable' => $baseDir . '/database/migrations/2017_01_05_103052_create_dominio_table.php',
+    'CreateEngordaTable' => $baseDir . '/database/migrations/2017_01_19_114332_create_engorda_table.php',
     'CreateForeignKeys' => $baseDir . '/database/migrations/2016_09_24_031054_create_foreign_keys.php',
     'CreateFornecedoresTable' => $baseDir . '/database/migrations/2016_09_24_030451_create_fornecedores_table.php',
     'CreateGaiolasTable' => $baseDir . '/database/migrations/2016_09_24_030451_create_gaiolas_table.php',
@@ -18,12 +21,8 @@ return array(
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreateRacasTable' => $baseDir . '/database/migrations/2016_09_24_030451_create_racas_table.php',
     'CreateReposicaoTable' => $baseDir . '/database/migrations/2017_01_15_202338_create_reposicao_table.php',
-<<<<<<< HEAD
-    'CreateTableMaternidade' => $baseDir . '/database/migrations/2017_01_15_232037_create_table_maternidade.php',
-=======
     'CreateTableAbate' => $baseDir . '/database/migrations/2017_01_19_124952_create_table_abate.php',
     'CreateTableEngorda' => $baseDir . '/database/migrations/2017_01_19_124925_create_table_engorda.php',
->>>>>>> a89f79374e050274c772bc49fb0054fbb9d883b4
     'CreateTableReproducao' => $baseDir . '/database/migrations/2017_01_08_185527_create_table_reproducao.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',

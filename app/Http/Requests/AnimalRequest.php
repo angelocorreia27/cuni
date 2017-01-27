@@ -24,10 +24,15 @@ class AnimalRequest extends FormRequest
     public function rules()
     {
         return [
+            'tatuagem' => 'required',
             'id_gaiola' =>'required',
+            'id_raca'  => 'required',
+            'ciclo'  => 'required',
             'data_nascimento'=>'required',
             'tipo_uso' =>'required',
             'sexo'=>'required',
+            'id_banda'=>'required'
+
         ];
     }
 }

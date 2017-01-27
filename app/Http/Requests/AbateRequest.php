@@ -23,8 +23,9 @@ class AbateRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
+         return [
+            'data_abate' => 'required'
+
         ];
     }
 }
