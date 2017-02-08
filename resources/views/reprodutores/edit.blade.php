@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends($layout)
 
 @section('htmlheader_title')
 	Editar
@@ -21,9 +21,11 @@
 	              </h3>
 	              
 				  <div class="pull-right box-tools">
+				        @if ($layout=='layouts.app')
 							<a href="{{ url('reprodutores') }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="Voltar">
 								 <i class="fa  fa-arrow-left"></i>
 							</a>
+						@endif
 					</div><!-- /. tools -->
 	            </div><!-- /.box-header -->
 

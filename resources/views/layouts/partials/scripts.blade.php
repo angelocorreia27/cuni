@@ -32,13 +32,19 @@
       });
 </script>
 
-  
-   
-</script>
+
+    <script src="https://swisnl.github.io/jQuery-contextMenu/dist/jquery.contextMenu.js" type="text/javascript"></script>
+
+    <script src="https://swisnl.github.io/jQuery-contextMenu/dist/jquery.ui.position.min.js" type="text/javascript"></script>
+
 <!-- AdminLTE App -->
 <script src="{{ asset('/js/app.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('/js/loadRemoteContent.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/js/contextmenu.js') }}"></script> 
+ <script src="{{ asset('/js/jquery.colorbox.js') }}" type="text/javascript"></script>
 <script src="{{ asset('/js/mapa_cobricao.js') }}" type="text/javascript"></script>
+   
+
 
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.

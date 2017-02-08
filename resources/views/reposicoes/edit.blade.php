@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends($layout)
 
 @section('htmlheader_title')
 	Reposicao
@@ -22,14 +22,12 @@
 	              </h3>
 	              
 				  <div class="pull-right box-tools">
-						<a href="{{ url('reposicoes') }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="Voltar">
-							 <i class="fa  fa-arrow-left"></i>
-						</a>
+				        
+						
 					</div><!-- /. tools -->
-	            </div><!-- /.box-header -->
 
 	            <div class="box-body">
-					{!! Form::model($reposicao, ['method'=>'PATCH',null,'route'=>['reposicoes.update', $reposicao->id],'id'=>'reposicoes-form'])!!}
+					{!! Form::model($reposicao, ['method'=>'PATCH','popup'=>'true','route'=>['reposicoes.update', $reposicao->id],'id'=>'reposicoes-form'])!!}
 					    @include('reposicoes.form', array('submitButtonText'=>'Editar'))
 					{!! Form::close() !!}
 				</div>

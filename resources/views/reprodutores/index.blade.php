@@ -62,7 +62,7 @@
 				                    		<td>{{ \Carbon\Carbon::createFromFormat('Y-m-d', $reproducao->data_parto)->format('d-m-Y') }}</td>
 
 				                    		<td class="actions">
-						                        <a href="{{ route('reprodutores.edit',$reproducao->id) }}" class="btn btn-primary btn-xs", data-remote='false'])>      <i class="fa fa-edit"></i>
+						                        <a href="{{ route('reprodutores.edit',$reproducao->id) }}" class="btn btn-primary btn-xs"])>      <i class="fa fa-edit"></i>
 						                        </a>                           
 						                         <button type="button" class="btn btn-xs btn-warning btn-flat" data-toggle="modal" data-target="#confirmDelete" data-id="{{ $reproducao->id }}" data-name="{{ $reproducao->id }}" data-title="Confirm reproducao deletion" data-url="/reprodutores/">
 						                            <i class="fa fa-trash"></i>

@@ -781,6 +781,7 @@ class ComposerStaticInit7918fdb5a92fcabeec2e7ece51d1e983
         'RemoveColumnsCicloEntrada' => __DIR__ . '/../..' . '/database/migrations/2017_01_08_182847_remove_columns_ciclo_entrada.php',
         'RemoveFornecedorToAnimaisTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_06_001431_remove_fornecedor_to_animais_table.php',
         'RenameTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_22_105022_rename_table.php',
+        'RenameTableReprodutores' => __DIR__ . '/../..' . '/database/migrations/2017_01_28_210849_rename_table_reprodutores.php',
         'SebastianBergmann\\CodeCoverage\\CodeCoverage' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/CodeCoverage.php',
         'SebastianBergmann\\CodeCoverage\\CoveredCodeNotExecutedException' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/Exception/CoveredCodeNotExecutedException.php',
         'SebastianBergmann\\CodeCoverage\\Driver\\Driver' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/Driver/Driver.php',

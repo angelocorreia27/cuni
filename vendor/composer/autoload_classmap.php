@@ -471,6 +471,7 @@ return array(
     'RemoveColumnsCicloEntrada' => $baseDir . '/database/migrations/2017_01_08_182847_remove_columns_ciclo_entrada.php',
     'RemoveFornecedorToAnimaisTable' => $baseDir . '/database/migrations/2017_01_06_001431_remove_fornecedor_to_animais_table.php',
     'RenameTable' => $baseDir . '/database/migrations/2017_01_22_105022_rename_table.php',
+    'RenameTableReprodutores' => $baseDir . '/database/migrations/2017_01_28_210849_rename_table_reprodutores.php',
     'SebastianBergmann\\CodeCoverage\\CodeCoverage' => $vendorDir . '/phpunit/php-code-coverage/src/CodeCoverage.php',
     'SebastianBergmann\\CodeCoverage\\CoveredCodeNotExecutedException' => $vendorDir . '/phpunit/php-code-coverage/src/Exception/CoveredCodeNotExecutedException.php',
     'SebastianBergmann\\CodeCoverage\\Driver\\Driver' => $vendorDir . '/phpunit/php-code-coverage/src/Driver/Driver.php',

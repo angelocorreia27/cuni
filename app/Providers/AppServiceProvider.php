@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Request;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +14,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->composer('*',function($view){
+            $popup = Request::input('popup') ? true : null;
+            $layout = $popup ? 'layouts.popup' : 'layouts.app';
+            $view->with(compact('layout'));
+        });
     }
 
     /**

@@ -15,8 +15,7 @@ $(document).on('ajax:success', '.btn[data-remote]', function(e, data, status, xh
       .show()
       .find('ul')
       .html(toList(data.responseJSON));
-  });
-  
+  });  
 });
 
 function toList(messages) {
@@ -56,3 +55,4 @@ $('#destroy-btn').bind('ajax:success', function(e, data, status, xhr){
     $(e.target).closest('tr').remove();
     console.log("Deleted resource #"+data);
 });
+
