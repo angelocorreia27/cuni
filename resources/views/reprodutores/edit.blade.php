@@ -20,16 +20,17 @@
 	              <h3 class="box-title">	              	 
 	              </h3>
 	              
-				  <div class="pull-right box-tools">
+				   <div class="pull-right box-tools">
 				        @if ($layout=='layouts.app')
 							<a href="{{ url('reprodutores') }}" class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="Voltar">
 								 <i class="fa  fa-arrow-left"></i>
 							</a>
 						@endif
-					</div><!-- /. tools -->
+					</div><!-- /. tools --> 
+
 	            </div><!-- /.box-header -->
 
-	            <div class="box-body"> 
+	             <div class="box-body"> 
 					{!! Form::model($reproducao, ['method'=>'PATCH',null,'route'=>['reprodutores.update', $reproducao->id],'id'=>'reprodutores-form'])!!}
 					     @include('reprodutores.form', array('submitButtonText'=>'Editar')) 
 					{!! Form::close() !!} 

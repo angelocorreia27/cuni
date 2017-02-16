@@ -1,16 +1,16 @@
-@extends('layouts.app')
+<!-- @extends('layouts.app') -->
 
-@section('htmlheader_title')
+<!-- @section('htmlheader_title')
 	home
-@endsection
+@endsection -->
 
-@section('contentheader_title')
+<!-- @section('contentheader_title')
   {{ trans('adminlte_lang::message.app_name') }}
-@endsection
+@endsection -->
 
-@section('contentheader_description')
+<!-- @section('contentheader_description')
   Control panel
-@endsection
+@endsection -->
 
 
 @section('main-content')

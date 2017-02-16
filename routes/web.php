@@ -38,3 +38,4 @@ Route::group(['middleware' => ['web']], function(){
 
 Route::get('bandas','CobricaoController@getBanda');
 Route::get('getListTatuagem/{sexo}/{banda}','CobricaoController@getListTatuagem');
+Route::get('contact', 'ContactController@index');
