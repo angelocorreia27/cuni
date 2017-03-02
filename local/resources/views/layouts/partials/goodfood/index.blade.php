@@ -8,9 +8,9 @@
     <!-- Basic Page Needs
   ================================================== -->
 	<meta charset="utf-8">
-	<title>Produtor de coelhos</title>
-	<meta name="description" content="Free Responsive Html5 Css3 Templates | zerotheme.com">
-	<meta name="author" content="www.zerotheme.com">
+	<title>Produtor de Coelhos</title>
+	<meta name="description" content="Produtor Nacional de Coelhos | Palpite, Lda">
+	<meta name="author" content=" Palpite, Lda">
 	
     <!-- Mobile Specific Metas
 	================================================== -->
@@ -49,13 +49,13 @@
 	<header class="zerogrid">
 		<div class="logo">
 			<hr class="line-1">
-			<a href="#">zGoodFood</a>
-			<span>Lorem ipsum dolor sit amet</span>
+			<a href="#">Palpite, LDa</a>
+			<span>Produtor Nacional de Coelhos</span>
 			<hr class="line-1">
 		</div>
 		<div id='cssmenu' class="align-center">
 			<ul>
-			   <li class="active"><a href="{{ url('/') }}"><span>Home</span></a></li>
+			   <li class="active"><a href="{{ url('/') }}"><span>Ínicio</span></a></li>
 			   
 			   <!-- <li class=' has-sub'><a href='about.html'><span>About</span></a>
 				  <ul >
@@ -73,8 +73,8 @@
 					 </li>
 				  </ul>
 			   </li> -->
-			   <li><a href="{{ url('menu') }}"><span>Menu</span></a></li>
-			  <li><a href="{{ url('event') }}"><span>Events</span></a></li>
+			  <!--  <li><a href="{{ url('menu') }}"><span>Menu</span></a></li> -->
+			  <li><a href="{{ url('event') }}"><span>Eventos</span></a></li>
 			  <li><a href="{{ url('contact') }}"><span>Contactos</span></a></li>
 			   <li class='last'><a href="{{ url('login') }}"><span>Área de Membro</span></a></li>
 			</ul>
@@ -167,7 +167,7 @@
 						<div class="row wrap-box"><!--Start Box-->
 							<div class="header">
 								<hr class="line-1">
-								<h2 style="color: #fff;">Latest event:</h2>
+								<h2 style="color: #fff;">Último evento:</h2>
 							</div>
 							<div class="post">
 								<div class="col-1-2">
@@ -195,7 +195,7 @@
 					<div class="row">
 						<div class="col-1-3">
 							<div class="wrap-col">
-								<p>Copyright - <a href="http://www.zerotheme.com" target="_blank" rel="nofollow">Free Html5 Templates</a> designed by <a href="http://www.zerotheme.com" target="_blank" rel="nofollow">ZEROTHEME</a></p>
+								<p>Copyright - 2017<a href="#" target="_blank" rel="nofollow">Palpite, Lda</a> designed by <a href="http://www.zerotheme.com" target="_blank" rel="nofollow">ZEROTHEME</a></p>
 							</div>
 						</div>
 						<div class="col-1-3">
@@ -203,7 +203,7 @@
 								<ul class="social-buttons">
 									<li><a href="#"><i class="fa fa-twitter"></i></a>
 									</li>
-									<li><a href="#"><i class="fa fa-facebook"></i></a>
+									<li><a href="https://www.facebook.com/Palpite-Lda-1765910980331197/"><i class="fa fa-facebook"></i></a>
 									</li>
 									<li><a href="#"><i class="fa fa-linkedin"></i></a>
 									</li>

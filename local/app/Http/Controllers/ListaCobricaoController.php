@@ -19,7 +19,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 
 
-class AnimalController extends Controller
+class ListaCobricaoController extends Controller
 {
 
      /**
@@ -39,15 +39,22 @@ class AnimalController extends Controller
      */
     public function index()
     {
-       // $animais= Animal::all();
-
-       // print_r($animais);
-        $animais = Animal::where('estado', 'Activo')->get();
+        //$animais= Animal::all();
+        // Condição para listar todos os animais de sexo 0 que não existe registo na tabela reprodução ou que existe na condição:
+        // ultimo registo  diagnostico positivo); 
+        //print_r($animais);
+        $animais = Animal::where('estado', 'Activo')->where('sexo', '0')->whereNotIn('id',function($q){
+                $q->select('id_matriz')->from('reproducao')->where('diagnostico', 'P');})->get();
+/*
+        $result = DB::table('exams')->whereNotIn('id', function($q){
+    $q->select('examId')->from('testresults');
+})->get();
+*/
 
         if (Request::wantsJson()){
             return $animais;
         }else{
-            return view('animais.index',compact('animais'));
+            return view('lista_cobricao.index',compact('animais'));
         }
     }
 
@@ -62,7 +69,7 @@ class AnimalController extends Controller
          $gaiolas = Gaiola::pluck('descricao','id')->all();
          $racas = Raca::pluck('descricao','id')->all();
          $bandas = Dominio::where('dominio','BANDA')->pluck('significado','id')->all();  
-         $estados = Dominio::where('dominio','Estado')->pluck('significado','codigo')->all();  
+         $estados = Dominio::where('dominio','Estado')->pluck('significado','id')->all();  
         
          return view('animais.create',compact('animal','racas','gaiolas', 'bandas', 'estados'));
     }
@@ -110,7 +117,7 @@ class AnimalController extends Controller
          $gaiolas = Gaiola::pluck('descricao','id')->all();
          $racas = Raca::pluck('descricao','id')->all();
          $bandas = Dominio::where('dominio','BANDA')->pluck('significado','id')->all();  
-         $estados = Dominio::where('dominio','Estado')->pluck('significado','codigo')->all();  
+         $estados = Dominio::where('dominio','Estado')->pluck('significado','id')->all();  
         return view('animais.edit',compact('animal','racas','gaiolas', 'bandas', 'estados'));  
     }
 

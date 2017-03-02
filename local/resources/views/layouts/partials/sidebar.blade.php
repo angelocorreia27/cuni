@@ -40,13 +40,23 @@
             <!-- Optionally, you can add icons to the links -->
             <li class="active"><a href="{{ url('home') }}"><i class='fa fa-home'></i> <span>{{ trans('adminlte_lang::message.home') }}</span></a></li>
             
+             <li><a href="#"><i class='fa fa-gears'></i> <span>Listas actividades diária</span></a>
+
+                <ul class="treeview-menu">
+                    <li><a href="{{ url('cobricoes') }}">Mapa de Cobrição</a></li>
+                    <li><a href="{{ url('lista_cobricao') }}">Lista para cobrição</a></li>
+                    <li><a href="{{ url('lista_palpacao') }}">Lista para palpação</a></li>
+                    <li><a href="{{ url('lista_ninho') }}">Lista para colocação de ninho</a></li>
+                    <li><a href="{{ url('lista_vpartos') }}">Lista para verificação de partos</a></li>
+                    <li><a href="{{ url('lista_desmame') }}">Lista para desmame</a></li>
+                </ul>
+             </li>  
+
             <li class="treeview">
                 <a href="#"><i class='fa fa-list'></i> <span>Gestão Cunícula</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="{{ url('animais') }}">Lista de Animais</a></li>
-                    <li><a href="{{ url('reposicoes') }}">Lista de Reposição</a></li>
-
-                    <li><a href="{{ url('cobricoes') }}">Mapa de Cobrição</a></li>
+                    <li><a href="{{ url('reposicoes') }}">Lista de Reposição</a></li>                    
                     <li><a href="{{ url('reproducao') }}">Lista de Cobricão</a></li>
                     <li><a href="{{ url('gestantes') }}">Lista de Gestantes</a></li>                 
                     <li><a href="{{ url('maternidades') }}">Lista de Partos</a></li>
@@ -77,7 +87,6 @@
                 </ul>
             </li>
 
-           <!-- <li><a href="#"><i class='fa fa-gears'></i> <span>Configurações</span></a></li> --> 
 
         </ul><!-- /.sidebar-menu -->
     </section>

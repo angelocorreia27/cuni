@@ -35,6 +35,12 @@ Route::group(['middleware' => ['web']], function(){
     Route::resource('engordas', 'EngordaController');
     Route::resource('abates', 'AbateController');
     Route::resource('cobricoes','CobricaoController');
+
+    Route::resource('lista_cobricao','ListaCobricaoController'); 
+    Route::resource('lista_palpacao','ListaPalpacaoController'); 
+    Route::resource('lista_ninho','ListaCNinhoController'); 
+    Route::resource('lista_vpartos','ListaVPartosController');
+    Route::resource('lista_desmame','ListaDesmameController');
 });
 
 Route::get('bandas','CobricaoController@getBanda');
