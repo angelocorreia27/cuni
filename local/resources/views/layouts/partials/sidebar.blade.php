@@ -11,7 +11,7 @@
                     @if(Auth::user()->avatar)
                         <img  src="/uploads/{{Auth::user()->avatar}}" class="img-circle" alt="Cinque Terre" >
                     @else
-                        <img  src="/img/user2-160x160.jpg" class="img-circle" alt="Cinque Terre" >
+                        <img  src="{{ asset('/img/user2-160x160.jpg') }}" class="img-circle" alt="Cinque Terre" >
                     @endif
                 </div>
 

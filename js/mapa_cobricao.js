@@ -58,8 +58,10 @@ var getTatuagem = function(sexo,bandas,length_list,color){
         id_banda = bandas[i].id;
         bandaLenght = bandas.length;
         (function(id_banda,sexo){
+            
+           // $lisTat = '/getListTatuagem/'+sexo+"/"+id_banda;
 
-            $.getJSON("/getListTatuagem/"+sexo+"/"+id_banda,function(data){
+            $.getJSON('getListTatuagem/'+sexo+"/"+id_banda,function(data){
                 $.each(data,function(key,value){
                     if (sexo==0){
                         items.push('<li class="example label-'+color+'">'+value.tatuagem+'</li>'); 
