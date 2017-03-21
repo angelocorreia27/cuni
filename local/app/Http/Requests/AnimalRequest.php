@@ -23,16 +23,20 @@ class AnimalRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'tatuagem' => 'required',
+        $id =  $this->id ?: 'NULL';
+
+         return [
+            'tatuagem' => 'unique:animais,tatuagem,'.$id.',id,sexo,'.$this->sexo,
+            'sexo'=> 'required',
             'id_gaiola' =>'required',
             'id_raca'  => 'required',
             'data_nascimento'=>'required',
             'tipo_uso' =>'required',
-            'sexo'=>'required',
-            'id_banda'=>'required',
-            'estado'=>'required'
-
+            'id_banda'=>'required'
         ];
+        
     }
+
+
+
 }

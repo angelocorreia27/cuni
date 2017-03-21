@@ -34,10 +34,10 @@
 			            <div class="col-xs-12 table-responsive">
 			                <table class="table table-bordered table-xs" class="tabela-sheet" id="table-stock">
 				                <thead>
-				                    <tr>		                        
+				                    <tr>
+				                    	<th >Matriz</th>	
+				                    	<th >Reprodutor</th>
 				                        <th >Gaiola</th>
-				                        <th >Reprodutor</th>
-				                        <th >Matriz</th>
 				                        <th >Data Cobertura</th>
 				                        <th >Previsão de Parto</th>			                     
 				               
@@ -47,12 +47,11 @@
 				                <tbody>
 				                     @foreach ($reprodutores as $reproducao) 
 				                    	<tr>
-				                    	     <td>{{$reproducao->id_gaiola}}</td> 
-				                    		<td>{{$reproducao->id_reprodutor}}</td>
-				                    		<td>{{$reproducao->id_matriz}}</td>
 
+				                    		<td>{{$reproducao->tatuf}}</td>
+				                    		<td>{{$reproducao->tatum}}</td>
+				                    	    <td>{{$reproducao->gaiola_desc}}</td> 
 				                    		 <td>{{$reproducao->data_cobertura }}</td>
-
 				                    		<td> {{$reproducao->prev_parto }} </td>
 
 				                    		 <!-- <td class="actions">

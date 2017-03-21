@@ -62,8 +62,9 @@ class AnimalController extends Controller
          $gaiolas = Gaiola::pluck('descricao','id')->all();
          $racas = Raca::pluck('descricao','id')->all();
          $bandas = Dominio::where('dominio','BANDA')->pluck('significado','id')->all();  
-         $estados = Dominio::where('dominio','Estado')->pluck('significado','codigo')->all();  
-        
+         $estados = Dominio::where('dominio','Estado')->pluck('significado','codigo')->all();
+  
+         
          return view('animais.create',compact('animal','racas','gaiolas', 'bandas', 'estados'));
     }
     /**
@@ -73,8 +74,9 @@ class AnimalController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(AnimalRequest $request)
-    {
-        
+    {   
+
+         $request->merge(array('estado' => "Activo"));
          $animal = Animal::create($request->all());
 
         session()->flash('flash_message','Animal successfully added.'); //<--FLASH MESSAGE

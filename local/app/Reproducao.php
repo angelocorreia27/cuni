@@ -12,7 +12,7 @@ class Reproducao extends Model {
 
 	//use SoftDeletes;
 
-	protected $fillable = array('id', 'id_gaiola','id_reprodutor','id_matriz','data_cobertura','prev_parto','aborto','data_parto','diagnostico');	
+	protected $fillable = array('id','id_reprodutor','id_matriz','data_cobertura','prev_parto','aborto','data_parto','diagnostico');	
 
 	public function reproducao(){
     	return $this->hasMany('App\Reproducao');

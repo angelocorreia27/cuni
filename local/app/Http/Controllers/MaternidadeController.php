@@ -6,7 +6,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\MaternidadeRequest;
 
-use App\Gaiola;
+use App\Reproducao;
 use App\Maternidade;
 use Request;
 
@@ -36,14 +36,32 @@ class MaternidadeController extends Controller
      */
     public function index()
     {
-        $maternidades= Maternidade::all();
-        $gaiolas= Gaiola::all();
+        $maternidades = Maternidade::all();
 
+        /*
+        $maternidades =DB::table('maternidade as t1')
+                ->join('reproducao as t2', 't1.id_reproducao', '=', 't2.id')
+                ->join('animais as t3', 't2.id_matriz', '=', 't3.id')
+                ->join('animais as t4', 't2.id_reprodutor', '=', 't4.id')
+
+                ->pluck(DB::raw('CONCAT("Fêmea: ", CONCAT(t3.tatuagem,";   Macho: ",t4.tatuagem)) AS tatu'),
+                    't1.id')->all();
+        */
+
+        /*
+        ->pluck(DB::raw('CONCAT("Fêmea: ", CONCAT(t3.tatuagem,";   Macho: ",t4.tatuagem)) AS tatu'),
+                    't1.id', 't1.data_parto', 't1.n_vivos', 't1.n_mortos', 't1.data_prev_desmame', 't1.data_prev_cobertura')->all();
+
+        $gaiola =DB::table('reproducao as t')
+                ->join('animais as t1', 't.id_matriz', '=', 't1.id')
+                ->join('gaiola as t2', 't1.id_gaiola', '=', 't2.id')
+                ->select('t2.id')->get();
+        */
 
         if (Request::wantsJson()){
             return $maternidaes;
         }else{
-            return view('maternidades.index',compact('maternidades','gaiolas'));
+            return view('maternidades.index',compact('maternidades'));
         }
     }
 
@@ -54,10 +72,15 @@ class MaternidadeController extends Controller
      */
     public function create()
     {
-         $maternidade = new Maternidade();
-         $gaiolas = Gaiola::pluck('descricao','id')->all();         
+        $maternidade = new Maternidade();
+       
 
-         return view('maternidades.create',compact('maternidade','gaiolas'));
+       $reproducao =DB::table('reproducao as t')
+                ->join('animais as t1', 't.id_matriz', '=', 't1.id')
+                ->join('animais as t2', 't.id_reprodutor', '=', 't2.id')
+                ->pluck(DB::raw('CONCAT("Fêmea: ", CONCAT(t1.tatuagem,";   Macho: ",t2.tatuagem)) AS tatu'),'t.id_reprodutor')->all();
+
+         return view('maternidades.create',compact('maternidade','reproducao'));
     }
     /**
      * Store a newly created resource in storage.
@@ -100,9 +123,12 @@ class MaternidadeController extends Controller
     {
          //$maternidade = Maternidade::find($maternidade);
 
-        $gaiolas = Gaiola::pluck('descricao','id')->all();
+       $reproducao =DB::table('reproducao as t')
+                ->join('animais as t1', 't.id_matriz', '=', 't1.id')
+                ->join('animais as t2', 't.id_reprodutor', '=', 't2.id')
+                ->pluck(DB::raw('CONCAT("Fêmea: ", CONCAT(t1.tatuagem,";   Macho: ",t2.tatuagem)) AS tatu'),'t.id_reprodutor')->all();
          
-        return view('maternidades.edit',compact('maternidade','gaiolas'));  
+        return view('maternidades.edit',compact('maternidade','reproducao'));  
     }
 
     /**
@@ -146,4 +172,16 @@ class MaternidadeController extends Controller
             return redirect('maternidades');
         }
     }
+
+    public function tatu( int $rep){
+
+             $tatuagem =DB::table('reproducao as t')
+                ->join('animais as t1', 't.id_matriz', '=', 't1.id')
+                ->join('animais as t2', 't.id_reprodutor', '=', 't2.id')
+                ->where('t.id', '=', 'rep')
+                ->select(DB::raw('CONCAT("Fêmea: ", CONCAT(t1.tatuagem,";   Macho: ",t2.tatuagem)) AS tatu'))->get();
+                
+            return $tatuagem;
+    }
+
 }

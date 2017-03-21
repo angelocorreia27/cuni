@@ -36,16 +36,22 @@ class ListaDesmameController extends Controller
      */
     public function index()
     {
-        //$maternidades= Maternidade::all();
-        $maternidades = Maternidade::whereNull('data_desmame')->orderBy('data_prev_desmame', 'asc')->get();
-        
+        $maternidades= Maternidade::all();
+       // $maternidades = Maternidade::whereNull('data_desmame')->orderBy('data_prev_desmame', 'asc')->get();
+        /*
+        $maternidades =DB::table('maternidade as t')
+                ->join('reproducao as t3', 't.id_reproducao', '=', 't3.id')
+                ->join('animais as t1', 't3.id_matriz', '=', 't1.id')
+                ->join('animais as t2', 't3.id_reprodutor', '=', 't2.id')
+                ->pluck(DB::raw('CONCAT("Fêmea: ", CONCAT(t1.tatuagem,";   Macho: ",t2.tatuagem)) AS tatu'),'t3.id_reprodutor')->all();
+            */
         $gaiolas= Gaiola::all();
 
 
         if (Request::wantsJson()){
             return $maternidaes;
         }else{
-            return view('maternidades.index',compact('maternidades','gaiolas'));
+            return view('lista_desmame.index',compact('maternidades','gaiolas'));
         }
     }
 

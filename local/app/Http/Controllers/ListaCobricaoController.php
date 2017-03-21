@@ -11,6 +11,7 @@ use App\Fornecedor;
 use App\Raca;
 use App\Gaiola;
 use App\Dominio;
+use App\Reproducao;
 use Request;
 
 use DateTime;

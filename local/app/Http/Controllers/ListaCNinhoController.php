@@ -34,20 +34,32 @@ class ListaCNinhoController extends Controller
 
     /**
 
-     * Display a listing of the resource.
-     *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
        // $reprodutores= Reproducao::paginate(10);
-        $reprodutores = Reproducao::where('diagnostico','P')->whereNull('data_parto')->whereNull('aborto')->orderBy('data_cobertura', 'asc')->get();
+        $dt = Carbon::now()->subDays(3);
+        /*
+        $reprodutores = Reproducao::where('diagnostico','P')
+        ->where('prev_parto', '<=',$dt)
+        ->whereNull('data_parto')->whereNull('aborto')->orderBy('data_cobertura', 'asc')->get();
+        */
+
+        $reprodutores =DB::table('reproducao as t1')
+                ->join('animais as t3', 't1.id_matriz', '=', 't3.id')
+                ->join('animais as t4', 't1.id_reprodutor', '=', 't4.id')
+                ->join('gaiolas as t5', 't3.id_gaiola', '=', 't5.id')
+                ->where('prev_parto', '<=',$dt)->where('diagnostico','P')
+                ->whereNull('data_parto')->whereNull('aborto')->orderBy('data_cobertura', 'asc')
+                ->select('t1.id', 't1.data_cobertura', 't1.prev_parto', 't3.tatuagem as tatuf',
+                 't4.tatuagem as tatum', 't5.descricao as gaiola_desc')->get();
 
         
         if (Request::wantsJson()){
             return $reprodutores;
         }else{
-            return view('reproducao.index',compact('reprodutores'));
+            return view('lista_cninho.index',compact('reprodutores'));
         }
         
     }

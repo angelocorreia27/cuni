@@ -41,13 +41,26 @@ class ListaPalpacaoController extends Controller
     public function index()
     {
        // $reprodutores= Reproducao::paginate(10);
-        $reprodutores = Reproducao::whereNull('diagnostico')->orderBy('data_cobertura', 'asc')->get();
+        $dt = Carbon::now()->subDays(14);
+        /*
+        $reprodutores = Reproducao::whereNull('diagnostico')
+        ->where('data_cobertura', '<=',$dt)
+        ->orderBy('data_cobertura', 'asc')->get();
+        */
+
+        $reprodutores =DB::table('reproducao as t1')
+                ->join('animais as t3', 't1.id_matriz', '=', 't3.id')
+                ->join('animais as t4', 't1.id_reprodutor', '=', 't4.id')
+                ->where('data_cobertura', '<=',$dt)
+                ->orderBy('data_cobertura', 'asc')
+                ->select('t1.id', 't1.data_cobertura', 't1.prev_parto', 't3.tatuagem as tatuf',
+                 't4.tatuagem as tatum')->get();
 
         
         if (Request::wantsJson()){
             return $reprodutores;
         }else{
-            return view('reproducao.index',compact('reprodutores'));
+            return view('lista_palpacao.index',compact('reprodutores'));
         }
         
     }

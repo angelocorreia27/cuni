@@ -21,7 +21,7 @@
 	            <div class="box-header with-border">
 	              <h3 class="box-title"></h3>
 	               <div class="pull-left box-tools">
-	                  <a href="{{ url('engorda/create') }}"  class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="">
+	                  <a href="{{ url('engordas/create') }}"  class="btn btn-primary btn-sm" role="button" data-toggle="tooltip" title="">
 	                       <i class="fa fa-plus"></i>
 	                  </a>
 	                  
@@ -34,7 +34,6 @@
 			                <table class="table table-bordered table-xs" class="tabela-sheet" id="table-engorda">
 				                <thead>
 				                    <tr>		                        
-				                        <th >Reprodutora</th>
 				                        <th >Gaiola</th>
 				                        <th >Data entrada</th> 
 				                        <th >Quantidade</th> 
@@ -44,19 +43,18 @@
 				                    </tr>
 				                </thead>
 				                <tbody>
-				                    @foreach ($engordas as $engorda)
+				                    @foreach ($engorda as $eng)
 				                        <tr>
-					                    	<td>{{$engordas->id_maternidade}}</td> 
-					                    	<td>{{$engordas->id_gaiola}}</td> 
-					                    	<td>{{$engordas->data_entrada}}</td> 
-					                    	<td>{{$engordas->quantidade}}</td>
-					                    	<td>{{$engordas->dias_fase}}</td>
-					                    	<td>{{$engordas->prev_saida}}</td>
+					                    	<td>{{$eng->id_gaiola}}</td> 
+					                    	<td>{{$eng->data_entrada}}</td> 
+					                    	<td>{{$eng->quantidade}}</td>
+					                    	<td>{{$eng->dias_fase}}</td>
+					                    	<td>{{$eng->prev_saida}}</td>
 					                    	
 					                    	<td class="actions">
-						                        <a href="{{ route('engorda.edit',$engorda->id) }}" class="btn btn-primary btn-xs", data-remote='true'])>      <i class="fa fa-edit"></i>
+						                        <a href="{{ route('engordas.edit',$eng->id) }}" class="btn btn-primary btn-xs", data-remote='true'])>      <i class="fa fa-edit"></i>
 						                        </a>                           
-						                        <button type="button" class="btn btn-xs btn-warning btn-flat" data-toggle="modal" data-target="#confirmDelete" data-id="{{ $engorda->id }}" data-name="{{ $engorda->name }}" data-title="Confirm provider deletion" data-url="/engorda/">
+						                        <button type="button" class="btn btn-xs btn-warning btn-flat" data-toggle="modal" data-target="#confirmDelete" d<ata-id="{{ $eng->id }}" data-name="{{ $eng->name }}" data-title="Confirm provider deletion" data-url="/engordas/">
 						                            <i class="fa fa-trash"></i>
 						                        </button>  
 						                    </td>

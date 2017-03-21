@@ -9,7 +9,7 @@
 @endsection
 
 @section('contentheader_description')
-  Reprodução
+  Cobrição
 @endsection
 
 
@@ -34,12 +34,11 @@
 			                <table class="table table-bordered table-xs" class="tabela-sheet" id="table-stock">
 				                <thead>
 				                    <tr>		                        
-				                        <th >Gaiola</th>
-				                        <th >Reprodutor</th>
 				                        <th >Matriz</th>
+				                        <th >Reprodutor</th>
 				                         <th >Data Cobertura</th>
-				                        <th >Previsão de Parto</th>				                     
-				                        <th >Aborto</th>
+				                        <th >Previsão de Parto</th>		                     
+				                        <th >Diagnostico</th>
 				                        <th >Data de Parto</th>
 				                        <th></th>
 				                    </tr>
@@ -47,15 +46,14 @@
 				                <tbody>
 				                     @foreach ($reprodutores as $reproducao) 
 				                    	<tr>
-				                    	     <td>{{$reproducao->id_gaiola}}</td> 
-				                    		<td>{{$reproducao->id_reprodutor}}</td>
+				                    		
 				                    		<td>{{$reproducao->id_matriz}}</td>
-
+											<td>{{$reproducao->id_reprodutor}}</td>
 				                    		 <td>{{$reproducao->data_cobertura }}</td>
 
 				                    		<td> {{$reproducao->prev_parto }} </td>
 				                    		
-				                    		<td>{{$reproducao->aborto}} </td>
+				                    		<td>{{$reproducao->diagnostico}} </td>
 
 				                    		<td>{{$reproducao->data_parto }}</td> 
 

@@ -12,11 +12,16 @@ class Maternidade extends Model {
 
 	//use SoftDeletes;
 
-	protected $fillable = array('id_gaiola', 'id_reproducao', 'data_parto', 'vivos', 'n_m', 'peso_ninhada', 'peso_desmame', 'a_desmamar','prev_desmame','prev_cobertura');
+	protected $fillable = array('id_reproducao', 'data_parto', 'n_vivos', 'n_mortos', 'peso_ninhada', 'peso_desmame', 'a_desmamar','prev_desmame','prev_cobertura');
 
-	public function gaiola()
+	public function reproducao()
     {
-    	return $this->belongsTo('App\Gaiola','id_gaiola');
+    	return $this->belongsTo('App\Reproducao','id_matriz');
+    }
+
+    public function tatu(){
+
+    	return $this->belongsTo('App\Maternidade', 'rep');
     }
 
 }

@@ -8,7 +8,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ReproducaoRequest;
 
 use App\Reproducao;
-use App\Gaiola;
 use App\Animal;
 use Request;
 
@@ -60,9 +59,8 @@ class ReproducaoController extends Controller
     public function create()
     {
          $reproducao = new Reproducao();
-         $gaiolas = Gaiola::pluck('descricao','id')->all();
-         $reprodutor = Animal::where('sexo','1')->where('tipo_uso','Reproducao')->pluck('tatuagem','id')->all();   
-         $matrizes = Animal::where('sexo','0')->where('tipo_uso','Reproducao')->pluck('tatuagem','id')->all();     
+         $reprodutor = Animal::where('sexo','1')->pluck('tatuagem','id')->all();   
+         $matrizes = Animal::where('sexo','0')->pluck('tatuagem','id')->all();     
 
          return view('reproducao.create',compact('reproducao','reprodutor','gaiolas', 'matrizes'));
     }
@@ -78,7 +76,6 @@ class ReproducaoController extends Controller
        $reproducao = new Reproducao();
        
        $reproducao->data_cobertura    =$request->data_cobertura;
-       $reproducao->id_gaiola    =$request->id_gaiola;
        $reproducao->id_matriz    =$request->id_matriz; 
        $reproducao->id_reprodutor    =$request->id_reprodutor;
        
@@ -119,6 +116,9 @@ class ReproducaoController extends Controller
     public function show($id)
     {
         //
+          //$matrizes = Animal::find($id);
+          //$this->layout->content = View::make('animal.show')->with('matrizes', $matrizes);
+
     }
 
     /**
@@ -131,9 +131,8 @@ class ReproducaoController extends Controller
     {
         $reproducao = Reproducao::find($reproducao);
 
-        $gaiolas = Gaiola::pluck('descricao','id')->all();
-        $reprodutor = Animal::where('sexo','1')->where('tipo_uso','Reproducao')->pluck('tatuagem','id')->all();   
-        $matrizes = Animal::where('sexo','0')->where('tipo_uso','Reproducao')->pluck('tatuagem','id')->all();   
+        $reprodutor = Animal::where('sexo','1')->pluck('tatuagem','id')->all();   
+        $matrizes = Animal::where('sexo','0')->pluck('tatuagem','id')->all();   
         $abortos = Dominio::where('dominio','SimNao')->pluck('significado','id')->all();   
         return view('reproducao.edit',compact('reproducao','reprodutor','gaiolas', 'matrizes', 'abortos'));  
     }
@@ -150,8 +149,7 @@ class ReproducaoController extends Controller
         $reproducao = Reproducao::find($reproducao);
 
         
-        $reproducao->data_cobertura    =$request->data_cobertura;
-       $reproducao->id_gaiola    =$request->id_gaiola;
+       $reproducao->data_cobertura    =$request->data_cobertura;
        $reproducao->id_matriz    =$request->id_matriz; 
        $reproducao->id_reprodutor    =$request->id_reprodutor;
        
@@ -160,9 +158,11 @@ class ReproducaoController extends Controller
        $prev_parto->addDays(31);
        $reproducao->prev_parto = $prev_parto; 
        $reproducao->aborto = $request->aborto;
-       $reproducao->data_parto =$request->data_parto;
-       //$reproducao->prev_parto =$request->diagnostico;
-
+       if ($request->data_parto !=null){
+          $reproducao->data_parto =$request->data_parto;
+        }
+       $reproducao->diagnostico =$request->diagnostico;
+       
         
        if ( $reproducao->update() ){          
            session()->flash('flash_message','Cobrição successfully updated.'); //<--FLASH MESSAGE

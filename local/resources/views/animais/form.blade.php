@@ -96,26 +96,27 @@
 			</select>  --}}
 		</div>
 	</div> 
+	@if (isset($flag)=='Editar')
+		<div class="col-lg-3 col-md-4 col-sm-6">
+	        <div class="form-group form-group-sm">
+				{!! Form::label('estado', 'Estado *:') !!}
+			    {!! Form::select('estado',['' => 'Escolha o Estado'] + $estados,$animal->estado, ['class'=>'form-control select2','style'=>'width: 100%;'])  !!} 	  
+
+				{{-- <select name="estado" id="estado" class="form-control">
+				<option>-- Escolha o Estado --</option>
+					@foreach ($estados as $est)				
+						
+						@if ($est->codigo == $animal->estado)
+							<option value="{{$est->codigo}}" selected>{{$est->significado}}</option>	
+						@else
+							<option value="{{$est->codigo}}">{{$est->significado}}</option>	
+						@endif				
+					@endforeach
+				</select>  --}}
+			</div>
+		</div> 
 	
-	<div class="col-lg-3 col-md-4 col-sm-6">
-        <div class="form-group form-group-sm">
-			{!! Form::label('estado', 'Estado *:') !!}
-		    {!! Form::select('estado',['' => 'Escolha o Estado'] + $estados,$animal->estado, ['class'=>'form-control select2','style'=>'width: 100%;'])  !!} 	  
-
-			{{-- <select name="estado" id="estado" class="form-control">
-			<option>-- Escolha o Estado --</option>
-				@foreach ($estados as $est)				
-					
-					@if ($est->codigo == $animal->estado)
-						<option value="{{$est->codigo}}" selected>{{$est->significado}}</option>	
-					@else
-						<option value="{{$est->codigo}}">{{$est->significado}}</option>	
-					@endif				
-				@endforeach
-			</select>  --}}
-		</div>
-	</div> 
-
+	@endif
 	<div class="col-xs-12">      
         {!! Form::submit($submitButtonText,['class'=>'btn btn-primary pull-right']) !!}      
     </div>

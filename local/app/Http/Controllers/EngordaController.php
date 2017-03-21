@@ -1,13 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-
-//use Illuminate\Http\Request;
 use App\Http\Requests\EngordaRequest;
-
 use App\Engorda;
-
+use App\Maternidade;
+use App\Gaiola;
 use Request;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class EngordaController extends Controller
 {
@@ -18,8 +19,8 @@ class EngordaController extends Controller
      */
     public function index()
     {
-        $engordas  = Engorda::all();
-        return view('engordas.index',compact('engordas'));
+        $engorda  = Engorda::all();
+        return view('engordas.index',compact('engorda'));
     }
 
     /**
@@ -29,7 +30,13 @@ class EngordaController extends Controller
      */
     public function create()
     {
-        return view('engordas.create');
+        $engorda = new Engorda();
+        $maternidade =DB::table('reproducao as t')
+                ->join('animais as t1', 't.id_matriz', '=', 't1.id')
+                ->join('animais as t2', 't.id_reprodutor', '=', 't2.id')
+                ->pluck(DB::raw('CONCAT("Fêmea: ", CONCAT(t1.tatuagem,";   Macho: ",t2.tatuagem)) AS tatu'),'t.id_reprodutor')->all();
+        $gaiola = Gaiola::pluck('descricao','id')->all();
+        return view('engordas.create', compact('engorda', 'maternidade', 'gaiola'));
     }
 
     /**

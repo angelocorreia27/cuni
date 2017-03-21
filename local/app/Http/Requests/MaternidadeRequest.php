@@ -25,7 +25,6 @@ class MaternidadeRequest extends FormRequest
     {
                    return [
             'id_reproducao' => 'required',
-            'id_gaiola' =>'required',
             'data_parto'  => 'required',
             'n_vivos'  => 'required',
             'n_mortos'=>'required'

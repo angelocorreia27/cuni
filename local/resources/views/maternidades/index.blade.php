@@ -35,31 +35,23 @@
 				                <thead>
 				                    <tr>		                        
 				                        <th >Reproducao</th>
-				                        <th >Gaiola</th>
 				                        <th >Data de Parto</th>
-				                        <th >Vivos</th>
-				                        <th >Numeros de Mortos</th>
-				                        <th >Peso ninhada</th>
-				                        <th >Peso desmame</th>
-				                        <th >A desmamar</th>
-				                        <th >Preveção de desmame</th>
-				                        <th >Preveção cobertura</th>
+				                        <th >Nados Vivos</th>
+				                        <th >Nados Mortos</th>
+				                        <th >Previsão desmame</th>
+				                        <th >Previsão cobertura</th>
 				                        <th></th>
 				                    </tr>
 				                </thead>
 				                <tbody>
 				                    @foreach ($maternidades as $maternidade)
 				                        <tr>
-					                    	<td>{{$maternidade->id_reproducao}}</td>
-					                    	<td>{{$maternidade->gaiola->descricao}}</td>
-					                    	<td>{{ \Carbon\Carbon::createFromFormat('Y-m-d', $maternidade->data_parto)->format('d-m-Y') }}</td>
-					                    	<td>{{$maternidade->vivos}}</td>
-					                    	<td>{{$maternidade->n_m}}</td>
-					                    	<td>{{$maternidade->peso_ninhada}}</td>
-					                    	<td>{{$maternidade->peso_desmame}}</td>
-					                    	<td>{{$maternidade->a_desmamar}}</td>
-					                    	<td>{{ \Carbon\Carbon::createFromFormat('Y-m-d', $maternidade->prev_desmame)->format('d-m-Y') }}</td>
-					                        <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d', $maternidade->prev_cobertura)->format('d-m-Y') }}</td>
+					                    	<td>{{$maternidade->tatu}}</td>
+					                    	<td>{{ $maternidade->data_parto }}</td>
+					                    	<td>{{$maternidade->n_vivos}}</td>
+					                    	<td>{{$maternidade->n_mortos}}</td>
+					                    	<td>{{  $maternidade->data_prev_desmame }}</td>
+					                        <td>{{ $maternidade->data_prev_cobertura }}</td>
 					                    	<td class="actions">
 						                        <a href="{{ route('maternidades.edit',$maternidade->id) }}" class="btn btn-primary btn-xs", data-remote='true'])>      <i class="fa fa-edit"></i>
 						                        </a>                           

@@ -13,6 +13,7 @@
 @endsection
 
 @section('main-content')
+   @include('layouts.shared.alert')
      <div class="row">
 	    <div class="col-lg-12">
 	        <div class="box box-default">
@@ -30,7 +31,7 @@
 	            <div class="box-body">
 
 					{!! Form::model($animal, ['method'=>'PATCH',null,'route'=>['animais.update', $animal->id],'id'=>'animais-form'])!!}
-					    @include('animais.form', array('submitButtonText'=>'Editar'))
+					    @include('animais.form', array('submitButtonText'=>'Editar','flag' => 'Editar'))
 					{!! Form::close() !!}
 				</div>
 			</div>
