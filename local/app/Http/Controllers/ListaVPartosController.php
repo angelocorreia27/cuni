@@ -10,6 +10,7 @@ use App\Http\Requests\ReproducaoRequest;
 use App\Reproducao;
 use App\Gaiola;
 use App\Animal;
+use app\Maternidade;
 use Request;
 
 use DateTime;
@@ -49,9 +50,11 @@ class ListaVPartosController extends Controller
         $reprodutores =DB::table('reproducao as t1')
                 ->join('animais as t3', 't1.id_matriz', '=', 't3.id')
                 ->join('animais as t4', 't1.id_reprodutor', '=', 't4.id')
+                ->join('gaiolas as t5', 't3.id_gaiola', '=', 't5.id')
+                ->wherein('t3.estado', array('Activo', 'MAbate'))
                 ->where('diagnostico','P')->whereNull('data_parto')->whereNull('aborto')->where('prev_parto','<=', Carbon::now()->subDays(1))->orderBy('data_cobertura', 'asc')
                 ->select('t1.id', 't1.data_cobertura', 't1.prev_parto', 't3.tatuagem as tatuf',
-                 't4.tatuagem as tatum')->get();
+                 't4.tatuagem as tatum', 't5.descricao')->get();
         
         if (Request::wantsJson()){
             return $reprodutores;

@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-
+    
     <body class="hold-transition register-page">
     <div class="register-box">
         <div class="register-logo">
@@ -59,7 +59,9 @@
                         </div>
                     </div><!-- /.col -->
                     <div class="col-xs-4 col-xs-push-1">
+                        <!--
                         <button type="submit" class="btn btn-primary btn-block btn-flat">{{ trans('adminlte_lang::message.register') }}</button>
+                        -->
                     </div><!-- /.col -->
                 </div>
             </form>

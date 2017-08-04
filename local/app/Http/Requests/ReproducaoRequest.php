@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class ReproducaoRequest extends FormRequest
 {
@@ -22,13 +23,12 @@ class ReproducaoRequest extends FormRequest
      * @return array
      */
     public function rules()
-    {
+    {   
+          
          return [
+            'data_cobertura' => 'required' ,
             'id_reprodutor'  => 'required',
-            'id_matriz'  => 'required',
-            'data_cobertura'  => 'required'
-
-
+            'id_matriz'  => 'required'
         ];
     }
 }

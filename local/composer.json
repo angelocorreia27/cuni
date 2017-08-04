@@ -10,7 +10,8 @@
         "acacha/admin-lte-template-laravel": "2.*",
         "laravelcollective/html": "^5.3",
         "doctrine/dbal": "^2.5",
-        "paragonie/random_compat": "~1.4"
+        "paragonie/random_compat": "~1.4",
+        "khill/lavacharts" : "3.0.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

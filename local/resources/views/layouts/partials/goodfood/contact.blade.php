@@ -8,7 +8,7 @@
     <!-- Basic Page Needs
   ================================================== -->
 	<meta charset="utf-8">
-	<title>Palpite Sociedade Unipessoal, Lda</title>
+	<title>Palpite, Lda</title>
 	<meta name="description" content="Free Responsive Html5 Css3 Templates | zerotheme.com">
 	<meta name="author" content="www.zerotheme.com">
 	
@@ -46,80 +46,60 @@
 
 <body>
 <div class="wrap-body">
-	<header class="zerogrid">
-		<div class="logo">
-			<hr class="line-1">
-			<a href="#">zGoodFood</a>
-			<span>Lorem ipsum dolor sit amet</span>
-			<hr class="line-1">
-		</div>
-		<div id='cssmenu' class="align-center">
-			<ul>
-			   <li class="active"><a href='index.html'><span>Home</span></a></li>
-			   <li class=' has-sub'><a href='about.html'><span>About</span></a>
-				  <ul >
-					 <li class='has-sub'><a href='#'><span>Item 1</span></a>
-						<ul>
-						   <li><a href='#'><span>Sub Item</span></a></li>
-						   <li class='last'><a href='#'><span>Sub Item</span></a></li>
-						</ul>
-					 </li>
-					 <li class='has-sub'><a href='#'><span>Item 2</span></a>
-						<ul>
-						   <li><a href='#'><span>Sub Item</span></a></li>
-						   <li class='last'><a href='#'><span>Sub Item</span></a></li>
-						</ul>
-					 </li>
-				  </ul>
-			   </li>
-			   <li><a href='menu.html'><span>Menu</span></a></li>
-			   <li><a href='event.html'><span>Events</span></a></li>
-			   <li class='last'><a href='contact.html'><span>Contacts</span></a></li>
-			</ul>
-		</div>
-	</header>
+	
+	@include('layouts.partials.goodfood.menu')
 		<!--////////////////////////////////////Container-->
 		<section id="container">
 			<div class="wrap-container clearfix">
 				<div id="main-content">
 					<div class="wrap-content zerogrid ">
 						<div class='embed-container maps'>
-							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.289259162295!2d-120.7989351!3d37.5246781!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8091042b3386acd7%3A0x3b4a4cedc60363dd!2sMain+St%2C+Denair%2C+CA+95316%2C+Hoa+K%E1%BB%B3!5e0!3m2!1svi!2s!4v1434016649434" width="100%" height="370px" frameborder="0" style="border: 0"></iframe>
+							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3854.4222133400212!2d-23.526467686705406!3d14.969249789568481!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9359bd4be518d0d%3A0x6775a82562ca2af0!2sPalpite%2C+LDA!5e0!3m2!1spt-PT!2scv!4v1493399375065" width="100%" height="370px" frameborder="0" style="border: 0"></iframe>
 						</div>
 						<article class="background-gray">
 							<div class="art-header">
 								<hr class="line-2">
-								<h2>Contact form</h2>
+								<h2>Contacte-nos</h2>
+								@if(Session::has('msg'))
+
+									 {{ Session::get('msg') }}
+
+									@endif
 							</div>
 							<div class="art-content">
 								<div class="row">
 									<div id="contact_form">
-										<form name="form1" id="ff" method="post" action="contact.php">
+									
+									<!--<form name="form1" id="ff" method="post" action="postcontato">-->
+									{{ Form::open(array('action' => 'ContactController@contato', 'role' => 'form')) }}
 											<label class="row">
 												<div class="col-1-2">
 													<div class="wrap-col">
-														<input type="text" name="name" id="name" placeholder="Enter name" required="required" />
+														<input type="text" name="name" id="name" placeholder="Seu Nome" required="required" />
 													</div>
 												</div>
 												<div class="col-1-2">
 													<div class="wrap-col">
-														<input type="email" name="email" id="email" placeholder="Enter email" required="required" />
+														<input type="email" name="email" id="email" placeholder="Seu E-mail" required="required" />
 													</div>
 												</div>
 											</label>
 											<label class="row">
 												<div class="wrap-col">
-													<input type="text" name="subject" id="subject" placeholder="Subject" required="required" />
+													<input type="text" name="subject" id="subject" placeholder="Assunto" required="required" />
 												</div>
 											</label>
 											<label class="row">
 												<div class="wrap-col">
 													<textarea name="message" id="message" class="form-control" rows="4" cols="25" required="required"
-													placeholder="Message"></textarea>
+													placeholder="Mensagem"></textarea>
 												</div>
 											</label>
-											<center><input class="sendButton" type="submit" name="Submit" value="Submit"></center>
+											<!--
+											<center><input class="sendButton" type="Submit" name="Submit" value="Enviar"></center>-->
+											{{ Form::submit('Enviar', array('class' => 'btn btn-default')) }}{{ Form::close() }}
 										</form>
+										
 									</div>
 								</div>
 							</div>
@@ -127,6 +107,7 @@
 					</div>
 				</div>
 			</div>
+				
 		</section>
 		<hr class="line">
 		<!--////////////////////////////////////Footer-->

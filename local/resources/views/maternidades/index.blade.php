@@ -35,29 +35,38 @@
 				                <thead>
 				                    <tr>		                        
 				                        <th >Reproducao</th>
+				                        <th >Gaiola</th>
 				                        <th >Data de Parto</th>
 				                        <th >Nados Vivos</th>
 				                        <th >Nados Mortos</th>
-				                        <th >Previsão desmame</th>
-				                        <th >Previsão cobertura</th>
+				                        <th >Qtd. Obitos</th>
+				                        <th >Previsão Desmame</th>
+				                        
 				                        <th></th>
 				                    </tr>
 				                </thead>
 				                <tbody>
 				                    @foreach ($maternidades as $maternidade)
 				                        <tr>
-					                    	<td>{{$maternidade->tatu}}</td>
+					                    	<td>Fêmea: {{$maternidade->tatuf}}  ; Macho:{{$maternidade->tatum}}</td>
+					                    	<td>{{ $maternidade->descricao }}</td>
 					                    	<td>{{ $maternidade->data_parto }}</td>
 					                    	<td>{{$maternidade->n_vivos}}</td>
 					                    	<td>{{$maternidade->n_mortos}}</td>
-					                    	<td>{{  $maternidade->data_prev_desmame }}</td>
-					                        <td>{{ $maternidade->data_prev_cobertura }}</td>
+					                    	<td>{{$maternidade->qtd_obito }}</td>
+					                    	<td>{{$maternidade->data_prev_desmame }}</td>
+					                        
 					                    	<td class="actions">
 						                        <a href="{{ route('maternidades.edit',$maternidade->id) }}" class="btn btn-primary btn-xs", data-remote='true'])>      <i class="fa fa-edit"></i>
-						                        </a>                           
+						                        </a>  
+
+						                        <a href="{{ url('ficha/'.$maternidade->id_matriz) }}" class="btn btn-primary btn-xs", data-remote='true'])>      <i class="fa fa-file"></i>
+						                        </a>  
+						                        <!--                       
 						                        <button type="button" class="btn btn-xs btn-warning btn-flat" data-toggle="modal" data-target="#confirmDelete" data-id="{{ $maternidade->id }}" data-name="{{ $maternidade->id }}" data-title="Confirm maternidade deletion" data-url="/maternidades/">
 						                            <i class="fa fa-trash"></i>
 						                        </button>  
+						                        -->
 						                    </td>
 					                    </tr>
 				                    @endforeach

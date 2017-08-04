@@ -16,7 +16,7 @@
 @section('main-content')
     @include('layouts.shared.alert')
 	<div class="row">
-	    <div class="col-lg-12 col-xs-6">
+	    <div class="col-lg-12">
 	        <div class="box box-primary">
 	            <div class="box-header with-border">
 	              <h3 class="box-title"></h3>
@@ -31,32 +31,34 @@
 	            <div class="box-body">
 	                <div class="row">
 			            <div class="col-xs-12 table-responsive">
-			                <table class="table table-bordered table-xs" class="tabela-sheet" id="table-engorda">
+			                <table class="table table-bordered table-xs" class="tabela-sheet" id="table-stock">
 				                <thead>
 				                    <tr>		                        
+				                        <th >Maternidade</th>
 				                        <th >Gaiola</th>
 				                        <th >Data entrada</th> 
 				                        <th >Quantidade</th> 
-				                        <th >Dias na fase</th> 
-				                        <th >Previsão saida</th> 
+				                        <th >Qtd Obito</th> 
 				                        <th></th>
 				                    </tr>
 				                </thead>
 				                <tbody>
-				                    @foreach ($engorda as $eng)
+				                    @foreach ($engordas as $engorda)
 				                        <tr>
-					                    	<td>{{$eng->id_gaiola}}</td> 
-					                    	<td>{{$eng->data_entrada}}</td> 
-					                    	<td>{{$eng->quantidade}}</td>
-					                    	<td>{{$eng->dias_fase}}</td>
-					                    	<td>{{$eng->prev_saida}}</td>
+					                    	<td>Fêmea: {{$engorda->tatuf}}  ; Macho:{{$engorda->tatum}}</td>
+					                    	<td>{{$engorda->descricao}}</td> 
+					                    	<td>{{$engorda->data_entrada}}</td> 
+					                    	<td>{{$engorda->quantidade}}</td>
+					                    	<td>{{$engorda->qtd_obito}}</td>
 					                    	
 					                    	<td class="actions">
-						                        <a href="{{ route('engordas.edit',$eng->id) }}" class="btn btn-primary btn-xs", data-remote='true'])>      <i class="fa fa-edit"></i>
-						                        </a>                           
-						                        <button type="button" class="btn btn-xs btn-warning btn-flat" data-toggle="modal" data-target="#confirmDelete" d<ata-id="{{ $eng->id }}" data-name="{{ $eng->name }}" data-title="Confirm provider deletion" data-url="/engordas/">
+						                        <a href="{{ route('abates.create','id_engorda='.$engorda->id) }}" class="btn btn-primary btn-xs", data-remote='true'])>      <i class="fa fa-edit"></i>
+						                        </a> 
+						                        <!--                          
+						                        <button type="button" class="btn btn-xs btn-warning btn-flat" data-toggle="modal" data-target="#confirmDelete" <ata-id="{{ $engorda->id }}" data-name="{{ $engorda->descricao }}" data-title="Confirm provider deletion" data-url="/engordas/">
 						                            <i class="fa fa-trash"></i>
 						                        </button>  
+						                        -->
 						                    </td>
 					                    </tr>
 				                    @endforeach

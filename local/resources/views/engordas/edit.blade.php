@@ -29,7 +29,7 @@
 	            </div><!-- /.box-header -->
 
 	            <div class="box-body">
-					{!! Form::model($engorda, ['method'=>'PATCH',null,'route'=>['engordas.update', $Engorda->id],'id'=>'engordas-form'])!!}
+					{!! Form::model($engorda, ['method'=>'PATCH',null,'route'=>['engordas.update', $engorda->id],'id'=>'engordas-form'])!!}
 					    @include('engordas.form', array('submitButtonText'=>'Edit Engorda'))
 					{!! Form::close() !!}
 				</div>

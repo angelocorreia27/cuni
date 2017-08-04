@@ -9,7 +9,7 @@ use App\Http\Requests\MaternidadeRequest;
 use App\Gaiola;
 use App\Maternidade;
 use Request;
-
+use Carbon\Carbon;
 use DateTime;
 
 use App\Http\Controllers\Controller;
@@ -36,17 +36,18 @@ class ListaDesmameController extends Controller
      */
     public function index()
     {
-        $maternidades= Maternidade::all();
-       // $maternidades = Maternidade::whereNull('data_desmame')->orderBy('data_prev_desmame', 'asc')->get();
-        /*
-        $maternidades =DB::table('maternidade as t')
-                ->join('reproducao as t3', 't.id_reproducao', '=', 't3.id')
-                ->join('animais as t1', 't3.id_matriz', '=', 't1.id')
-                ->join('animais as t2', 't3.id_reprodutor', '=', 't2.id')
-                ->pluck(DB::raw('CONCAT("Fêmea: ", CONCAT(t1.tatuagem,";   Macho: ",t2.tatuagem)) AS tatu'),'t3.id_reprodutor')->all();
-            */
+      
         $gaiolas= Gaiola::all();
-
+        $dt = Carbon::now();
+        $maternidades =DB::table('maternidade as t1')
+                ->join('reproducao as t2', 't1.id_reproducao', '=', 't2.id')
+                ->join('animais as t3', 't2.id_matriz', '=', 't3.id')
+                ->join('animais as t4', 't2.id_reprodutor', '=', 't4.id')
+                ->join('gaiolas as t5', 't3.id_gaiola', '=', 't5.id')
+                ->whereNull('t1.data_desmame') 
+                ->where('t1.data_prev_desmame', '<=', $dt) 
+                -> select('t1.id','t1.data_parto', 't1.n_vivos', 't1.n_mortos', 't1.data_prev_desmame', 't1.data_prev_cobertura', 't2.id_matriz', 't3.tatuagem as tatuf', 't4.tatuagem as tatum' ,'t5.descricao', DB::raw('(select sum(quantidade) from obito where id_fase = t1.id and tipo_fase="Lactação") as qtd_obito'))
+                ->orderBy('data_prev_desmame', 'asc')->get();
 
         if (Request::wantsJson()){
             return $maternidaes;

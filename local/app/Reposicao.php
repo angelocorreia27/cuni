@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Reposicao extends Model {
 
-	protected $table = 'Reposicao';
+	protected $table = 'reposicao';
 	public $timestamps = false;
 
 	//use SoftDeletes;
@@ -17,6 +17,11 @@ class Reposicao extends Model {
    public function gaiola()
     {
     	return $this->belongsTo('App\Gaiola','id_gaiola');
+    }
+
+    public function maternidade()
+    {
+        return $this->belongsTo('App\Maternidade', 'id_maternidade');
     }
 	
 

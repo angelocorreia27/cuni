@@ -36,9 +36,9 @@
 				                    <tr>	
 				                    	<th >Matriz</th>	                        
 				                        <th >Reprodutor</th>
+				                         <th >Gaiola</th>
 				                         <th >Data Cobertura</th>
 				                        <th >Previsão de Parto</th>		                     
-				                        <th >Diagnostico</th>
 				                    </tr>
 				                </thead>
 				                <tbody>
@@ -46,9 +46,10 @@
 				                    	<tr>
 				                    		<td>{{$reproducao->tatuf}}</td>
 				                    		<td>{{$reproducao->tatum}}</td>
+				                    		<td>{{$reproducao->gaiola_desc }}</td>
 				                    		 <td>{{$reproducao->data_cobertura }}</td>
+				                    		 
 				                    		<td> {{$reproducao->prev_parto }} </td>
-				                    		<td>{{$reproducao->diagnostico}} </td>
 <!--
 				                    		 <td class="actions">
 						                        <a href="{{ route('reproducao.edit',$reproducao->id) }}" class="btn btn-primary btn-xs"])>      <i class="fa fa-edit"></i>

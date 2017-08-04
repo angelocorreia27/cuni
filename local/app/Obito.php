@@ -12,7 +12,7 @@ class Obito extends Model {
 
 	use SoftDeletes;
 
-	protected $fillable = array('data', 'causa', 'quantidade', 'id_fase', 'tipo_fase');
+	protected $fillable = array('id_fase', 'tipo_fase','causa', 'quantidade', 'data' );
 
 	public function obitos(){
      	return $this->hasMany('App\Obito');

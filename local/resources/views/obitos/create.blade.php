@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('htmlheader_title')
-	Raca
+	Obito
 @endsection
 
 @section('contentheader_title')

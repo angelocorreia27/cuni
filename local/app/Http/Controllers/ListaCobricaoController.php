@@ -13,9 +13,10 @@ use App\Gaiola;
 use App\Dominio;
 use App\Reproducao;
 use Request;
-
+use Carbon\Carbon;
 use DateTime;
-
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 
@@ -41,16 +42,54 @@ class ListaCobricaoController extends Controller
     public function index()
     {
         //$animais= Animal::all();
-        // Condição para listar todos os animais de sexo 0 que não existe registo na tabela reprodução ou que existe na condição:
-        // ultimo registo  diagnostico positivo); 
-        //print_r($animais);
-        $animais = Animal::where('estado', 'Activo')->where('sexo', '0')->whereNotIn('id',function($q){
-                $q->select('id_matriz')->from('reproducao')->where('diagnostico', 'P');})->get();
-/*
-        $result = DB::table('exams')->whereNotIn('id', function($q){
-    $q->select('examId')->from('testresults');
-})->get();
-*/
+        $currentPath= Route::getFacadeRoot()->current()->uri();
+        if ($currentPath =='lista_cobricaoR'){
+           $tipo_uso = 'Reposicao';  
+        }
+        else{
+            $tipo_uso = 'Reproducao';  
+        }
+        // mudança temporaria de 135 para 120 dias
+        $dt1 = Carbon::now()->subDays(120);
+        
+        // animais com data parto apto para cobrição  
+        
+        $animais = Animal::where('animais.estado', 'Activo')
+                    ->where('animais.sexo','0')
+                    ->where('animais.data_nascimento', '<=', $dt1)
+                    //->where('animais.tipo_uso', '=', 'Reposicao')
+                    ->whereNotExists(function($q){
+                        $q->select(DB::raw(1))->from('reproducao as t1')
+                          ->from('reproducao as t1')
+                          //->whereRaw('animais.id = t1.id_matriz')
+                          ->where(function ($query) {
+                            $descanso = 14;
+                            $duracaoGestacao = 31;
+                            $intervalo = $descanso + $duracaoGestacao;
+                            $dt_cob = Carbon::now()->subDays($intervalo);
+                                $query->whereRaw('animais.id = t1.id_matriz')
+                                      ->where('t1.data_cobertura','>=', $dt_cob)
+                                      ->where('t1.diagnostico', '=', 'P');
+                                      
+                                    }) // no tempo de diagnostico e sem diagnostico
+                                    ->orWhere(function($query) {
+                                         $dt_cob = Carbon::now()->subDays(11);
+                                        $query->whereRaw('animais.id = t1.id_matriz')
+                                              ->where('t1.data_cobertura','>=', $dt_cob)
+                                              ->whereNull('t1.diagnostico');
+                                    })
+                                            
+                            ;})//->tosql()
+                            
+                    //;
+                    
+                    ->get();
+       
+        
+       // var_dump($animais);
+      //  print_r($animais);
+                 //   dd($animais);
+       //echo $animais->toSql();
 
         if (Request::wantsJson()){
             return $animais;
@@ -71,7 +110,7 @@ class ListaCobricaoController extends Controller
          $racas = Raca::pluck('descricao','id')->all();
          $bandas = Dominio::where('dominio','BANDA')->pluck('significado','id')->all();  
          $estados = Dominio::where('dominio','Estado')->pluck('significado','id')->all();  
-        
+         
          return view('animais.create',compact('animal','racas','gaiolas', 'bandas', 'estados'));
     }
     /**

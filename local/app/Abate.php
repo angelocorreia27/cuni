@@ -7,11 +7,22 @@ use Illuminate\Database\Eloquent\Model;
 
 class Abate extends Model {
 
-	protected $table = 'reprodutores';
+	protected $table = 'abate';
 	public $timestamps = false;
 
 	//use SoftDeletes;
 
-	protected $fillable = array('id_engorda', 'id_gaiola', 'id_animal', 'data_abate', 'peso');	
+	protected $fillable = array('id_engorda','id_animal', 'data_abate', 'peso');	
+
+	
+	public function engorda()
+    {
+    	return $this->belongsTo('App\Engorda','id_engorda');
+    }
+
+    public function animal()
+    {
+    	return $this->belongsTo('App\Animal','id_animal');
+    }
 
 }

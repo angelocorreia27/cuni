@@ -12,7 +12,7 @@ class Engorda extends Model {
 
 	//use SoftDeletes;
 
-	protected $fillable = array('id_maternidade', 'id_gaiola', 'data_entrada', 'quantidade', 'dias_fase', 'prev_saida');
+	protected $fillable = array('id_maternidade', 'id_gaiola', 'data_entrada', 'quantidade', 'prev_saida', 'data_saida');
 
 
 	 public function maternidade()

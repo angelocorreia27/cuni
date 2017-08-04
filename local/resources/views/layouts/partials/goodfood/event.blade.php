@@ -46,38 +46,7 @@
 
 <body>
 <div class="wrap-body">
-	<header class="zerogrid">
-		<div class="logo">
-			<hr class="line-1">
-			<a href="#">zGoodFood</a>
-			<span>Lorem ipsum dolor sit amet</span>
-			<hr class="line-1">
-		</div>
-		<div id='cssmenu' class="align-center">
-			<ul>
-			   <li class="active"><a href='index.html'><span>Home</span></a></li>
-			   <li class=' has-sub'><a href='about.html'><span>About</span></a>
-				  <ul >
-					 <li class='has-sub'><a href='#'><span>Item 1</span></a>
-						<ul>
-						   <li><a href='#'><span>Sub Item</span></a></li>
-						   <li class='last'><a href='#'><span>Sub Item</span></a></li>
-						</ul>
-					 </li>
-					 <li class='has-sub'><a href='#'><span>Item 2</span></a>
-						<ul>
-						   <li><a href='#'><span>Sub Item</span></a></li>
-						   <li class='last'><a href='#'><span>Sub Item</span></a></li>
-						</ul>
-					 </li>
-				  </ul>
-			   </li>
-			   <li><a href='menu.html'><span>Menu</span></a></li>
-			   <li><a href='event.html'><span>Events</span></a></li>
-			   <li class='last'><a href='contact.html'><span>Contacts</span></a></li>
-			</ul>
-		</div>
-	</header>
+		@include('layouts.partials.goodfood.menu')
 		<!--////////////////////////////////////Container-->
 		<section id="container">
 			<div class="wrap-container clearfix">

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Input;
 
 //use Illuminate\Http\Request;
 
@@ -17,6 +17,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use App\Dominio;
+use Illuminate\Support\Facades\Validator;
 
 class ReproducaoController extends Controller
 {
@@ -39,8 +40,21 @@ class ReproducaoController extends Controller
      */
     public function index()
     {
-       // $reprodutores= Reproducao::paginate(10);
-        $reprodutores = Reproducao::whereNull('aborto')->whereNull('data_parto')->orderBy('prev_parto', 'asc')->get();
+       //$animais = Animais::All();
+        
+        //$reprodutores = Reproducao::whereNull('aborto')->whereNull('data_parto')->orderBy('prev_parto', 'asc')->get();
+        $dt = Carbon::now()->subDays(50); 
+        $reprodutores =DB::table('reproducao as t1')
+                ->join('animais as t3', 't1.id_matriz', '=', 't3.id')
+                ->join('animais as t4', 't1.id_reprodutor', '=', 't4.id')
+                ->where('t3.estado', '=', 'Activo')
+                ->whereNull('t1.aborto')
+                ->whereNull('t1.data_parto')
+                ->where('t1.data_cobertura', '>=', $dt)
+                ->select('t1.id','t1.id_matriz', 't1.diagnostico','t1.data_parto', 't1.data_cobertura', 't1.prev_parto', 't3.tatuagem as tatuf',
+                 't4.tatuagem as tatum')
+                ->orderBy('data_cobertura', 'desc')
+                ->get();
 
         
         if (Request::wantsJson()){
@@ -58,10 +72,17 @@ class ReproducaoController extends Controller
      */
     public function create()
     {
+         $dt1 = Carbon::now()->subDays(150);
          $reproducao = new Reproducao();
-         $reprodutor = Animal::where('sexo','1')->pluck('tatuagem','id')->all();   
+         $reprodutor = Animal::where('sexo','1')
+         ->where('data_nascimento', '<=', $dt1)
+         ->pluck('tatuagem','id')->all();   
          $matrizes = Animal::where('sexo','0')->pluck('tatuagem','id')->all();     
 
+        $id_matriz= Input::get('id_matriz'); 
+
+         $reproducao->id_matriz= $id_matriz;
+         
          return view('reproducao.create',compact('reproducao','reprodutor','gaiolas', 'matrizes'));
     }
     /**
@@ -72,7 +93,7 @@ class ReproducaoController extends Controller
      */
     public function store(ReproducaoRequest $request)
     {
-        
+       $input = Input::all();
        $reproducao = new Reproducao();
        
        $reproducao->data_cobertura    =$request->data_cobertura;
@@ -81,10 +102,26 @@ class ReproducaoController extends Controller
        
        $prev_parto = Carbon::createFromFormat('Y-m-d', $request->data_cobertura); 
        // considerar todos com ciclo de 31 dias
-       $prev_parto->addDays(31);
+       $prev_parto->addDays(32);
        $reproducao->prev_parto = $prev_parto; 
 
+      $messages = [
+    'data_cobertura.unique' => 'Cobertura já realizada!',
+];
+      $validation = Validator::make($input, Reproducao::rolesReproducao($reproducao->id, $reproducao->id_matriz), $messages);
         
+        if ($validation->passes())
+        {
+            if ( $reproducao->save() ){          
+               session()->flash('flash_message','Cobrição successfully added.'); //<--FLASH MESSAGE
+               return redirect('reproducao'); 
+            }
+        }
+        
+        return redirect('reproducao/create')->withInput()->withErrors($validation); 
+                
+      
+       /*
        if ( $reproducao->save() ){          
            session()->flash('flash_message','Cobrição successfully added.'); //<--FLASH MESSAGE
            return redirect('reproducao'); 
@@ -94,6 +131,7 @@ class ReproducaoController extends Controller
             session()->flash('flash_message','Failed saved the Cobrição.'); //<--FLASH MESSAGE
             return redirect('reproducao'); 
        }
+       */
 
        /* 
         $Reproducao = Reproducao::create($reproducao->all());
@@ -116,8 +154,8 @@ class ReproducaoController extends Controller
     public function show($id)
     {
         //
-          //$matrizes = Animal::find($id);
-          //$this->layout->content = View::make('animal.show')->with('matrizes', $matrizes);
+          $reproducao = Reproducao::find($id);
+          $this->layout->content = View::make('reproducao.show')->with('reproducao', $reproducao);
 
     }
 
@@ -129,13 +167,14 @@ class ReproducaoController extends Controller
      */
     public function edit($reproducao)
     {
+        //print_r(expression)
         $reproducao = Reproducao::find($reproducao);
-
         $reprodutor = Animal::where('sexo','1')->pluck('tatuagem','id')->all();   
         $matrizes = Animal::where('sexo','0')->pluck('tatuagem','id')->all();   
         $abortos = Dominio::where('dominio','SimNao')->pluck('significado','id')->all();   
         return view('reproducao.edit',compact('reproducao','reprodutor','gaiolas', 'matrizes', 'abortos'));  
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -148,7 +187,6 @@ class ReproducaoController extends Controller
     {
         $reproducao = Reproducao::find($reproducao);
 
-        
        $reproducao->data_cobertura    =$request->data_cobertura;
        $reproducao->id_matriz    =$request->id_matriz; 
        $reproducao->id_reprodutor    =$request->id_reprodutor;
@@ -162,7 +200,42 @@ class ReproducaoController extends Controller
           $reproducao->data_parto =$request->data_parto;
         }
        $reproducao->diagnostico =$request->diagnostico;
+       // Os marcados para abate, se o ultimo diagnostico for positivo coloca activo de novo
+
+       $matriz= Animal::find($request->id_matriz);
+       $reprodutor = Animal::find($request->id_reprodutor);
        
+       if($request->diagnostico =='P'){
+        $matriz->estado = 'Activo';
+        $matriz->update();
+       }else{
+
+        $data_cobertura = Carbon::now()->subDays(33);
+        // Femeas
+        $repCount =DB::table('reproducao as t1')
+                    ->where('id_matriz', '=', $request->id_matriz)
+                    ->where('diagnostico', '=', 'N')
+                    ->where('data_cobertura', '>=',$data_cobertura)
+                    ->get()->count();
+                    
+      if($repCount >=3){
+        $matriz->estado = 'MAbate';
+        $matriz->update();
+      }
+      //Machos
+
+      $repCount =DB::table('reproducao as t1')
+                    ->where('id_matriz', '=', $request->id_reprodutor)
+                    ->where('diagnostico', '=', 'N')
+                    ->where('data_cobertura', '>=',$data_cobertura)
+                    ->get()->count();
+                    
+      if($repCount >=4){
+        $reprodutor->estado = 'MAbate';
+        $reprodutor->update();
+      }
+
+       }
         
        if ( $reproducao->update() ){          
            session()->flash('flash_message','Cobrição successfully updated.'); //<--FLASH MESSAGE
@@ -173,16 +246,7 @@ class ReproducaoController extends Controller
             session()->flash('flash_message','Failed updated the Cobrição.'); //<--FLASH MESSAGE
             return redirect('reproducao'); 
        }
-
-        /*
-        $reproducao->update($request->all());
-        session()->flash('flash_message','Reproducao successfully updated.'); //<--FLASH MESSAGE
-
-        if (Request::wantsJson()){
-            return $reproducao;
-        }else{
-            return redirect('reproducao');
-        }*/
+      
 
     }
 
@@ -207,4 +271,6 @@ class ReproducaoController extends Controller
             return redirect('reproducao');
         }
     }
+
+
 }

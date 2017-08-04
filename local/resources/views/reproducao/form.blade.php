@@ -18,7 +18,7 @@
     <div class="col-lg-3 col-md-4 col-sm-6">
         <div class="form-group form-group-sm">
 			{!! Form::label('data_cobertura', 'Data Cobertura *:') !!}
-			{!! Form::date('data_cobertura', date('Y-m-d'), ['class'=>'form-control']) !!}
+			{!! Form::date('data_cobertura', null, ['class'=>'form-control']) !!}
 		</div>
 	</div>
 		
@@ -43,13 +43,12 @@
 			    {{ Form::checkbox('aborto', 'Sim') }}
 			</div>
 		</div> 
-		
+		<!--
 		<div class="col-lg-3 col-md-4 col-sm-6">
 	        <div class="form-group form-group-sm">
 				{!! Form::label('data_parto', 'Data de Parto:') !!}
 				{!! Form::date('data_parto', null, ['class'=>'form-control']) !!}
-				<!--<input type="date" class="form-control" id="data_parto">-->
-			</div>
+			</div>-->
 		</div> 
 	@endif
 

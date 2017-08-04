@@ -49,7 +49,10 @@ class GestantesController extends Controller
                 ->join('animais as t3', 't1.id_matriz', '=', 't3.id')
                 ->join('animais as t4', 't1.id_reprodutor', '=', 't4.id')
                 ->join('gaiolas as t5', 't3.id_gaiola', '=', 't5.id')
-                ->where('t1.diagnostico', 'P')->whereNull('t1.data_parto')->orderBy('t1.prev_parto', 'asc')
+                ->where('t1.diagnostico', 'P')->whereNull('t1.data_parto')
+                ->where('t3.estado', 'Activo')
+                ->whereNull('t1.aborto')
+                ->orderBy('t1.prev_parto', 'asc')
                 ->select('t1.id', 't1.data_cobertura', 't1.prev_parto', 't3.tatuagem as tatuf',
                  't4.tatuagem as tatum', 't5.descricao as gaiola_desc')->get();
 

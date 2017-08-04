@@ -43,6 +43,8 @@
 <script src="{{ asset('/js/contextmenu.js') }}"></script> 
  <script src="{{ asset('/js/jquery.colorbox.js') }}" type="text/javascript"></script>
 <script src="{{ asset('/js/mapa_cobricao.js') }}" type="text/javascript"></script>
+
+<script src="{{ asset('/js/homeChartChange.js') }}" type="text/javascript"></script>
    
 
 

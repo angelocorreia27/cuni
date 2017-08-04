@@ -31,6 +31,19 @@
 	            <div class="box-body">
 	                <div class="row">
 			            <div class="col-xs-12 table-responsive">
+
+	<div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="control-label">
+              {!! Form::label('id_sexo', 'Sexo *: ')!!}
+		
+        	<select name="id_sexo" id="id_sexo" class="form-control">
+				<option value="0" selected>Femea</option>	
+				<option value="1"> Macho</option>	
+						
+			</select> 
+        	</div>		
+	</div>
+	
 			                <table class="table table-bordered table-xs" class="tabela-sheet" id="table-stock">
 				                <thead>
 				                    <tr>	
@@ -40,8 +53,6 @@
 				                        <th >Banda</th>
 				                        <th >Sexo</th>				                        
 				                        <th >Raça</th>				                      
-				                        <th >Data Entrada</th>
-				                        <th >Peso Entrada</th>
 				                        <th></th>
 				                    </tr>
 				                </thead>
@@ -65,16 +76,13 @@
 				                    		
 				                    		<td>{{$animal->raca->descricao}} </td>
 				                    	
-
-				                    		<td> {{ $animal->data_entrada }}
-				                    		</td>
-
-				                    		<td> {{$animal->peso_entrada}}
-
-				                    		</td>
 				                    		<td class="actions">
 						                        <a href="{{ route('animais.edit',$animal->id) }}" class="btn btn-primary btn-xs", data-remote='true'])>      <i class="fa fa-edit"></i>
-						                        </a>                           
+						                        </a>  
+						                        <a href="{{ url('ficha/'.$animal->id) }}" class="btn btn-primary btn-xs", data-remote='true'])>      <i class="fa fa-file"></i>
+						                        </a>
+						                        <a href="{{ route('obitos.create',$animal->id) }}" class="btn btn-warning btn-xs", data-remote='true'])>      <i class="fa fa-fire"></i>
+						                        </a>    
 						                         <button type="button" class="btn btn-xs btn-warning btn-flat" data-toggle="modal" data-target="#confirmDelete" data-id="{{ $animal->id }}" data-name="{{ $animal->id }}" data-title="Confirm animal deletion" data-url="/animais/">
 						                            <i class="fa fa-trash"></i>
 						                        </button> 

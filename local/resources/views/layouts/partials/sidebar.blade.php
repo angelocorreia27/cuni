@@ -45,6 +45,7 @@
                 <ul class="treeview-menu">
                     <li><a href="{{ url('cobricoes') }}">Mapa de Cobrição</a></li>
                     <li><a href="{{ url('lista_cobricao') }}">Lista para cobrição</a></li>
+                    <!--<li><a href="{{ url('lista_cobricaoR') }}">Lista para cobrição reposição</a></li>-->
                     <li><a href="{{ url('lista_palpacao') }}">Lista para palpação</a></li>
                     <li><a href="{{ url('lista_ninho') }}">Lista para colocação de ninho</a></li>
                     <li><a href="{{ url('lista_vpartos') }}">Lista para verificação de partos</a></li>
@@ -62,6 +63,9 @@
                     <li><a href="{{ url('maternidades') }}">Lista de Partos</a></li>
                     <li><a href="{{ url('engordas') }}">Lista de Engorda</a></li>
                     <li><a href="{{ url('obitos') }}">Lista de Obito</a></li>
+                    <li><a href="{{ url('m_activo') }}">Lista de Machos activos</a></li>
+                    <li><a href="{{ url('v_femeas') }}">Verificação fêmeas</a></li>
+                    
                 </ul>
             </li>
 
@@ -69,15 +73,9 @@
                 <a href="#"><i class='fa fa-link'></i> <span>Saída de Animais</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="{{ url('abates') }}">Lista de Abates</a></li>
-                    <li><a href="#">Lista de Venda</a></li>
+                    <li><a href="{{ url('marcados_abate') }}">Marcados para Abate</a></li>
                 </ul>
             </li>
-
-            <!-- <li><a href="#"><i class='fa fa-shopping-cart'></i> <span>Venda</span></a></li>
-            <li><a href="#"><i class='fa fa-barcode'></i> <span>Compra</span></a></li>
-            <li><a href="{{ url('animais') }}"><i class='fa fa-database'></i> <span>Estoque</span></a></li>
-            <li><a href="{{ url('providers') }}"><i class='fa fa-truck'></i> <span>Fornecedor</span></a></li> -->
-
             <li class="treeview">
                 <a href="#"><i class='fa fa-cogs'></i> <span>Configurações</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">

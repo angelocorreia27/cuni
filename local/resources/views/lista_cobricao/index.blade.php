@@ -9,7 +9,7 @@
 @endsection
 
 @section('contentheader_description')
-  Lista Cobrição
+  Lista para Cobrição
 @endsection
 
 
@@ -35,14 +35,10 @@
 			                <table class="table table-bordered table-xs" class="tabela-sheet" id="table-stock">
 				                <thead>
 				                    <tr>	
-				                        <th >Tatuagem</th>	                        
-				                        <th >Gaiola</th>
+				                        <th >Tatuagem</th>
+				                        <th >Gaiola</th>	                        
 				                        <th >Uso</th>
-				                        <th >Banda</th>
-				                        <th >Sexo</th>				                        
-				                        <th >Raça</th>				                      
-				                        <th >Data Entrada</th>
-				                        <th >Peso Entrada</th>
+				                        <th >Banda</th>			                        
 				                        <th></th>
 				                    </tr>
 				                </thead>
@@ -51,36 +47,18 @@
 
 				                    	<tr>						     
 				                    	    <td> {{$animal->tatuagem}} </td>
-				                    	    <td>{{$animal->gaiola->descricao}}
-				                    	    </td> 
+				                    	    <td>{{$animal->gaiola->descricao}}</td> 
 				                    		<td> {{$animal->tipo_uso}} </td>
-				                    		<td> {{$animal->banda->significado}}
-				                    		</td>
-				                    		<td>
-
-					                    		 @if ($animal->sexo == 0)
-					                    			Femea
-					                    		@else
-					                    			Macho
-					                    		@endif 
-				                    		</td>
 				                    		
-				                    		<td>{{$animal->raca->descricao}} </td>
+				                    		<td> {{$animal->banda->significado}}</td>
 				                    	
-
-				                    		<td> {{ $animal->data_entrada }}
-				                    		</td>
-
-				                    		<td> {{$animal->peso_entrada}}
-
-				                    		</td>
 				                    		<td class="actions">
-						                        <a href="{{ url('reproducao/create?id_matriz='.$animal->id) }}" class="btn btn-primary btn-xs", data-remote='true'])>      <i class="fa fa-edit"></i>
-						                        </a>   
-						                        <!--                        
-						                         <button type="button" class="btn btn-xs btn-warning btn-flat" data-toggle="modal" data-target="#confirmDelete" data-id="{{ $animal->id }}" data-name="{{ $animal->id }}" data-title="Confirm animal deletion" data-url="/animais/">
-						                            <i class="fa fa-trash"></i>
-						                        </button> -->
+						                        <a href="{{ route('reproducao.create','id_matriz='.$animal->id) }}" class="btn btn-primary btn-xs", data-remote='true'])>      <i class="fa fa-edit"></i>
+						                        </a> 
+
+						                        <a href="{{ url('ficha/'.$animal->id) }}" class="btn btn-primary btn-xs", data-remote='true'])>      <i class="fa fa-file"></i>
+						                        </a>
+						                          
 						                    </td>
 				                    	</tr>
 				                    @endforeach

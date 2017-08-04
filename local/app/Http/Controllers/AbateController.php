@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 //use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Input;
 use App\Http\Requests\AbateRequest;
 
 use App\Abate;
-use App\Gaiola;
+use App\Engorda;
 use App\Animal;
 use Request;
-
+use Carbon\Carbon;
 use DateTime;
 
 use App\Http\Controllers\Controller;
@@ -54,13 +54,18 @@ class AbateController extends Controller
      */
     public function create()
     {
-         $Abate = new Abate();
-         $gaiolas = Gaiola::pluck('descricao','id')->all();
-         $reprodutor = Animal::where('sexo','1')->where('tipo_uso','Abate')->pluck('tatuagem','id')->all();   
-         $matrizes = Animal::where('sexo','0')->where('tipo_uso','Abate')->pluck('tatuagem','id')->all();     
-         
-
-         return view('abates.create',compact('Abate','reprodutor','gaiolas', 'matrizes'));
+         $abates = new Abate();
+         $engordas  = DB::table('engorda as e')
+                    ->whereNull('e.data_saida')
+                    ->join('gaiolas as g', 'e.id_gaiola', '=', 'g.id')
+                    ->orderBy('e.data_entrada', 'asc')
+                    ->pluck(DB::raw('CONCAT(g.descricao, " - ", e.data_entrada, " - ", "(",e.quantidade,")") AS descricao'),'e.id')
+                    ->all();
+                
+         $abates->id_engorda = Input::get('id_engorda');
+         $animais = Animal::wherein('estado', array('Activo', 'MAbate'))->pluck('tatuagem', 'id')->all();  
+            
+         return view('abates.create',compact('abates','animais', 'engordas'));
     }
     /**
      * Store a newly created resource in storage.
@@ -71,12 +76,44 @@ class AbateController extends Controller
     public function store(AbateRequest $request)
     {
         
-         $Abate = Abate::create($request->all());
+        //$abates = Abate::create($request->all());
+        $abates = New Abate();
 
-        session()->flash('flash_message','Abate successfully added.'); //<--FLASH MESSAGE
+        $abates->data_abate = $request->data_abate;
+
+        if (isset($request->id_engorda) && ($request->id_engorda !=null)){
+        $abates->id_engorda = $request->id_engorda;
+        }
+
+        if (isset($request->id_animal) && ($request->id_animal !=null)){
+        $abates->id_animal = $request->id_animal;
+        }
+
+        if ( $abates->save() ){          
+               session()->flash('flash_message','Abate successfully added.'); //<--FLASH MESSAGE
+               //return redirect('reproducao'); 
+            }
+
+        // Update estado animal
+        if (isset($request->id_animal) && ($request->id_animal !=null)){
+
+            $animal=Animal::find($request->id_animal);
+        $animal->estado = 'Abate';
+        $animal->update();
+        }
+        
+
+        // Update data_saida engorda
+        if (isset($abates->id_engorda) && ($abates->id_engorda !=null)){
+        $engorda=Engorda::find($abates->id_engorda);
+        $engorda->data_saida = Carbon::now();
+        $engorda->update();
+        }
+
+        //session()->flash('flash_message','Abate successfully added.'); //<--FLASH MESSAGE
 
         if (Request::wantsJson()){
-            return $Abate;
+            return $abates;
         }else{             
              return redirect('abates');            
         }
@@ -99,15 +136,18 @@ class AbateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($Abate)
+    public function edit($abate)
     {
-        $Abate = Abate::find($Abate);
 
-        $gaiolas = Gaiola::pluck('descricao','id')->all();
-        $reprodutor = Animal::where('sexo','1')->where('tipo_uso','Abate')->pluck('tatuagem','id')->all();   
-        $matrizes = Animal::where('sexo','0')->where('tipo_uso','Abate')->pluck('tatuagem','id')->all();   
+        $abates = Abate::find($abate);
+
+        $animais = Animal::where('estado','Activo')->pluck('tatuagem', 'id')->all(); 
+            
+        $engordas  = Engorda::whereNull('data_saida')
+                    ->join('gaiolas', 'id_gaiola', '=', 'gaiolas.id')
+                    ->pluck('gaiolas.descricao','engorda.id')->all();    
          
-        return view('abates.edit',compact('Abate','reprodutor','gaiolas', 'matrizes'));  
+        return view('abates.edit',compact('abates','animais', 'engordas'));  
     }
 
     /**
@@ -117,15 +157,17 @@ class AbateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(AbateRequest $request,  $Abate)
+    public function update(AbateRequest $request,  $abate)
     {
-        $Abate = Abate::find($Abate);
+        
+        $abates = Abate::find($abate);
 
-        $Abate->update($request->all());
+        $abates->update($request->all());
+        
         session()->flash('flash_message','Abate successfully updated.'); //<--FLASH MESSAGE
 
         if (Request::wantsJson()){
-            return $Abate;
+            return $abates;
         }else{
             return redirect('abates');
         }
@@ -138,16 +180,16 @@ class AbateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy( $Abate)
+    public function destroy( $abate)
     {
-        $Abate = Abate::find($Abate);
+        $abates = Abate::find($abate);
         //$Abate->deleted_at = new DateTime();
-        $Abate->delete();
+        $abates->delete();
         //$deleted= $Abate->delete();
         session()->flash('flash_message','Abate was removed with success');
 
         if (Request::wantsJson()){
-            return (string) $Abate;
+            return (string) $abates;
         }else{
             return redirect('abates');
         }

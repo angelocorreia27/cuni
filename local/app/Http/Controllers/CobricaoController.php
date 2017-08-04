@@ -20,23 +20,37 @@ class CobricaoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
         $animais= Animal::all();
 
         $bandas = Dominio::all()->where('dominio','BANDA');     
 
-        $reprodutores = Animal::all()->where('sexo','1')->where('tipo_uso','Reproducao');   
-        $matrizes = Animal::all()->where('sexo','0')->where('tipo_uso','Reproducao');  
+        $reprodutores = Animal::all()
+        ->where('sexo','1')
+        ->where('tipo_uso','Reproducao')
+        ->where('estado', 'Activo');  
+
+        $matrizes = Animal::all()
+            ->where('sexo','0')
+            ->where('tipo_uso','Reproducao')
+            ->where('estado', 'Activo');  
         
         //SELECT count(*) FROM animais WHERE sexo = 1 GROUP by(id_banda) order by 1 DESC LIMIT 1
 
         $max_reprodutores = Animal::where('sexo',1)
+                            ->where('estado', 'Activo')
                             ->groupBy('id_banda')
                             ->orderBy(DB::raw("COUNT(*)"),'desc')
                             ->count();
 
         $max_matrizes = Animal::where('sexo',0)
+                            ->where('estado', 'Activo')
                             ->groupBy('id_banda')
                             ->orderBy(DB::raw("COUNT(*)"),'desc')
                             ->count();
@@ -57,7 +71,8 @@ class CobricaoController extends Controller
 
     public function getListTatuagem($sexo, $banda){
         $reprodutores = Animal::where('sexo',$sexo)
-                      ->where('tipo_uso','Reproducao')
+                      //->where('tipo_uso','Reproducao')
+                      ->where('estado', 'Activo')
                       ->where('id_banda',$banda)
                       ->get();   
         return $reprodutores;

@@ -31,31 +31,35 @@
 	            <div class="box-body">
 	                <div class="row">
 			            <div class="col-xs-12 table-responsive">
-			                <table class="table table-bordered table-xs" class="tabela-sheet" id="table-obitos">
+			                <table class="table table-bordered table-xs" class="tabela-sheet" id="table-stock">
 				                <thead>
 				                    <tr>		                        
+				                        <th>Fase</th>
+				                        <th>Tatuagem; Maternidade; Gaiola</th>
 				                        <th >Data</th>
 				                        <th >Quantidade</th>
 				                        <th >Causa</th>
-				                        <th>Fase</th>
-				                        <th>Tatuagem</th>
+				                        
+				                    
 				                        <th></th>
 				                    </tr>
 				                </thead>
 				                <tbody>
 				                    @foreach ($obitos as $obito)
 				                        <tr>
+					                    	<td>{{$obito->tipo_fase}}</td>
+					                    	<td>{{$obito->id_fase}}</td> 
 					                    	<td>{{$obito->data}}</td>
 					                    	<td>{{$obito->quantidade}}</td>
 					                    	<td>{{$obito->causa}}</td>
-					                    	<td>{{$obito->tipo_fase}}</td>
-					                    	<td>{{$obito->id_fase}}</td>   
+					                    	  
 					                    	<td class="actions">
+						                        <!--
 						                        <a href="{{ route('obitos.edit',$obito->id) }}" class="btn btn-primary btn-xs", data-remote='true'])>      <i class="fa fa-edit"></i>
-						                        </a>                           
+						                        </a>                          
 						                        <button type="button" class="btn btn-xs btn-warning btn-flat" data-toggle="modal" data-target="#confirmDelete" data-id="{{ $obito->id }}" data-name="{{ $obito->name }}" data-title="Confirm provider deletion" data-url="/obitos/">
 						                            <i class="fa fa-trash"></i>
-						                        </button>  
+						                        </button>  --> 
 						                    </td>
 					                    </tr>
 				                    @endforeach 

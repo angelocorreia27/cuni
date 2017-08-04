@@ -25,9 +25,7 @@ class ObitoRequest extends FormRequest
     {
         return [
             'data' => 'required',
-            'quantidade' => 'required',
-            'id_fase' => 'required',
-            'tipo_fase' => 'required'
+            'causa' => 'required'
         ];
     }
 }

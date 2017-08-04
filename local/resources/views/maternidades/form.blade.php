@@ -25,8 +25,6 @@
 			{!! Form::number('n_mortos', null, ['class'=>'form-control']) !!}
 		</div>
 	</div>
-	
-	
 
 	<div class="col-xs-12">      
         {!! Form::submit($submitButtonText,['class'=>'btn btn-primary pull-right']) !!}      
